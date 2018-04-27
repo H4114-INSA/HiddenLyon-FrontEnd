@@ -17,8 +17,8 @@
     </ion-item>
   </form>
   <div>
-    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" routerLink="/page-home">login</button>
-    <button ion-button class="bottom_button" routerLink="/page-register">register</button>
+    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" routerLink="/page-home" method = "GET" (click)="login()">login</button>
+    <button ion-button class="bottom_button" routerLink="/page-register" >register</button>
     <button ion-button class="bottom_button">Forgotten password?</button>
   </div>
 </ion-content>
