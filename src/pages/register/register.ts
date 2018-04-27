@@ -23,7 +23,7 @@ export class RegisterPage {
   }
   register(){
     if(this.password==this.confPassword){
-      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
+      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.path);
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);
