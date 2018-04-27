@@ -4,7 +4,7 @@ export class User {
   mail:string;
   password:string;
   bio:string;
-  public User(fnam:string,lnam:string,mai:string,passwor:string,bi:string){
+  constructor(fnam:string,lnam:string,mai:string,passwor:string,bi:string){
     this.fname=fnam;
     this.lname=lnam;
     this.mail=mai;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/Rx';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,11 +16,11 @@ import { HttpClient  } from '@angular/common/http';
 @Injectable()
 export class AppService {
 
-  constructor(private http:HttpClient) {
+
+  constructor(protected http:HttpClient) {
   }
-  registerService(params:string): Observable<any>{
-    console.log("Test appService");
-    return this.http.get(params);
+  registerService(params:string,user:User){
+    return this.http.post(params,user).toPromise();
   }
 
   getPOI() {
