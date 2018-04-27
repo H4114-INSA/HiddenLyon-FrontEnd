@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {AppService} from "../../app/appService";
+import {UserService} from "../../service/UserService"
 import {User} from "../../model/user.model";
+import {Globals} from "../../globalVariable/globals";
 
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
-  providers:[AppService]
+  providers:[UserService]
 })
 export class RegisterPage {
   fname:string;
@@ -15,21 +16,20 @@ export class RegisterPage {
   bio:string;
   path:string;
   confPassword:string;
-  appService:AppService;
-  constructor(serv:AppService) {
-    this.appService=serv;
+  userService:UserService;
+
+  constructor(serv:UserService) {
+    this.userService=serv;
   }
   register(){
-    console.log("bonjour2");
     if(this.password==this.confPassword){
-      console.log("bonjour");
-    let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.path);
-    var params:string;
-    params="http://localhost:8080/user/all";
-    this.appService.registerService(params,user);}
-    else{
-      console.log("your password doesn't match with your confirmation!");
-  }
+      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
+      var params:string;
+      params="http://localhost:8080/user/add";
+      this.userService.registerService(params,user);
+      }else{
+      alert("your password doesn't match with your confirmation!");
+    }
   }
 }
 
