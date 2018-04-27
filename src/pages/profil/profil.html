@@ -8,10 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-
+//todo onglets
   <div class="contenu">
     <ion-item>
       <ion-avatar item-start>
+        //todo make it modifiable
         <img src={{path}}>
       </ion-avatar>
       <ion-input [(ngModel)]="prenom" [disabled]="!modif"></ion-input>
@@ -40,8 +41,8 @@
 
 
   <button *ngIf="!modif" ion-button class="modif" (click)="modifier()">Modifier</button>
-  <button *ngIf="modif" ion-button  (click)="modifier()">Annuler</button>
-  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifierBack()">Valider</button>
+  <button *ngIf="modif" ion-button  (click)="cancel()">Annuler</button>
+  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifier()">Valider</button>
 
   <ion-list>
     <ion-list-header>Mes Points Soumis</ion-list-header>

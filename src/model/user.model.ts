@@ -8,12 +8,12 @@ export class User {
   hashPassword:string;
 
 
-  constructor(fnam:string,lnam:string,mai:string,passwor:string,bi:string){
+  constructor(fnam:string,lnam:string,mai:string,passwor:string,bi:string,path:string){
     this.firstName=fnam;
     this.lastName=lnam;
     this.email=mai;
     this.hashPassword=passwor;
     this.biography=bi;
-    this.pathToProfilePicture="no picture";
+    this.pathToProfilePicture=path;
   }
 }

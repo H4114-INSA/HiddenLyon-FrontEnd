@@ -1,47 +1,47 @@
 import { Component } from '@angular/core';
+import {POI} from "../../model/POI.model";
+import {POIService} from "../../service/POIService";
 
 @Component({
   selector: 'page-validerPoint',
   templateUrl: 'validerPoint.html'
 })
 export class ValiderPointPage {
-  cat1:boolean;
-  cat2:boolean;
-  cat3:boolean;
-  cat4:boolean;
-  cat5:boolean;
-  cat6:boolean;
-  description:string;
+  poi:POI;
+  poiService:POIService;
   categorie:string;
-  image:string;
-  constructor() {
-    this.cat1=true;
-    this.cat2=false;
-    this.cat3=true;
-    this.cat4=true;
-    this.cat5=true;
-    this.cat6=false;
-    this.image="../../assets/imgs/bb.jpg";
-    this.description="Alios autem dicere aiunt multo etiam inhumanius (quem locum breviter paulo ante perstrinxi) praesidii adiumentique causa, non benevolentiae neque caritatis, amicitias esse expetendas; itaque, ut quisque minimum firmitatis haberet minimumque virium, ita amicitias appetere maxime; ex eo fieri ut mulierculae magis amicitiarum praesidia quaerant quam viri et inopes quam opulenti et calamitosi quam ii qui putentur beati.";
+  constructor(serv:POIService) {
+    this.poiService=serv;
+    this.poiService.getNextPointToValidate().subscribe(data => this.poi);
+    //todo
+    this.poi=new POI("big ben","lorem ipsum","../../assets/imgs/bb.jpg",true,false,true,false,true,true);
     this.categorie="";
-    if(this.cat1){
+    if(this.poi.cat1){
       this.categorie+="#catégorie1";
     }
-    if(this.cat2){
+    if(this.poi.cat2){
       this.categorie+="#catégorie2";
     }
-    if(this.cat3){
+    if(this.poi.cat3){
       this.categorie+="#catégorie3";
     }
-    if(this.cat4){
+    if(this.poi.cat4){
       this.categorie+="#catégorie4";
     }
-    if(this.cat5){
+    if(this.poi.cat5){
       this.categorie+="#catégorie5";
     }
-    if(this.cat6){
+    if(this.poi.cat6){
       this.categorie+="#catégorie6";
     }
   }
 
+  vote_Non(){
+    this.poiService.voteNon();
+    this.poiService.getNextPointToValidate();
+  }
+  vote_Oui(){
+    this.poiService.voteOui();
+    this.poiService.getNextPointToValidate();
+  }
 }

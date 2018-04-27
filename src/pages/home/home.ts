@@ -1,5 +1,5 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
-import {AppService} from "../../app/appService";
+import {POIService} from "../../service/POIService";
 
 declare var google;
 @Component({
@@ -9,14 +9,14 @@ declare var google;
 export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  appService:AppService;
+  poiService:POIService;
   pointVector: number[];
-  constructor() {}
-  ionViewDidLoad(){
-
+  constructor(serv:POIService) {
+    this.poiService=serv;
   }
+
   getPOI(){
-    this.appService.getPOI()
+    this.poiService.getPOI()
       .subscribe(data => this.pointVector);
   }
 

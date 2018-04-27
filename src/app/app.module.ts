@@ -8,14 +8,16 @@ import {LoginPage} from "../pages/login/login";
 import {ProfilPage} from "../pages/profil/profil";
 import { RegisterPage} from "../pages/register/register";
 import  { ValiderPointPage} from "../pages/validerPoint/validerPoint";
-import {Globals} from "../globalVariable/globals";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import  {AppRoutingModule} from "./app.routingModule";
-import {UserService} from "../service/UserService"
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+
+import {UserService} from "../service/UserService";
+import{POIService} from "../service/POIService";
+import {Globals} from "../globalVariable/globals";
 
 
 
@@ -44,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     UserService,
+    POIService,
     Globals,
     StatusBar,
     SplashScreen,

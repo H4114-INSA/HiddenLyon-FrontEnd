@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AppService} from "../../app/appService";
+import {UserService} from "../../service/UserService";
 import {User} from "../../model/user.model";
 
 @Component({
@@ -10,7 +10,7 @@ export class ProfilPage {
 
   modif:boolean;
   user:User;
-  appService:AppService;
+  userService:UserService;
   prenom:string;
   nom:string;
   path:string;
@@ -19,37 +19,38 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
-  constructor(serv:AppService) {
-    this.appService=serv;
+  constructor(serv:UserService) {
+    this.userService=serv;
+    //Todo get details
     this.user=new User("Eric","Cantona","MU@gmail.com","password","pas de description","../../assets/imgs/bb.jpg");
-    this.description=this.user.bio;
-    this.prenom=this.user.fname;
-    this.nom=this.user.lname;
-    this.mail=this.user.mail;
-    this.path=this.user.pathPicture;
+    this.description=this.user.biography;
+    this.prenom=this.user.firstName;
+    this.nom=this.user.lastName;
+    this.mail=this.user.email;
+    this.path=this.user.pathToProfilePicture;
     this.modif=false;
   }
-  modifier(){
-    this.description=this.user.bio;
-    this.prenom=this.user.fname;
-    this.nom=this.user.lname;
-    this.mail=this.user.mail;
-    this.path=this.user.pathPicture;
+  cancel(){
+    this.description=this.user.biography;
+    this.prenom=this.user.firstName;
+    this.nom=this.user.lastName;
+    this.mail=this.user.email;
+    this.path=this.user.pathToProfilePicture;
     this.pass1=null;
     this.pass2=null;
     this.pass3=null;
     this.modif=!this.modif;
   }
-  modifierBack(){
-    this.user.fname=this.prenom;
-    this.user.lname=this.nom;
-    this.user.bio=this.description;
-    this.user.mail=this.mail;
+  modifier(){
+    this.user.firstName=this.prenom;
+    this.user.lastName=this.nom;
+    this.user.biography=this.description;
+    this.user.email=this.mail;
     if(this.pass1){
-      if (this.pass1 == this.user.password) {
+      if (this.pass1 == this.user.hashPassword) {
         if(this.pass2) {
           if (this.pass2 == this.pass3) {
-            this.user.password = this.pass2;
+            this.user.hashPassword = this.pass2;
           }
           else {
             console.log("new password doesn't match its confirmation!");
@@ -62,11 +63,9 @@ export class ProfilPage {
         console.log("bad actual password!");
         return;}
     }
-    console.log(this.user.password);
-    console.log(this.user.bio);
-    //TODO implement image
+    //TODO implement image,url
     var url:string="lorem ipsum";
-    this.appService.updateUser(url,this.user);
+    this.userService.updateUser(url,this.user);
     this.modif=!this.modif;
   }
 }

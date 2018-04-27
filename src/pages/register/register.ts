@@ -6,7 +6,6 @@ import {Globals} from "../../globalVariable/globals";
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
-  providers:[UserService]
 })
 export class RegisterPage {
   fname:string;

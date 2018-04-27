@@ -11,19 +11,22 @@
   <div class="marge">
     <ion-item>
       <ion-avatar>
-        <img src={{image}}>
+        <img src={{poi.pathToPicture}}>
       </ion-avatar>
     </ion-item>
 
 
-    <ion-label text-center="true"><strong>Big Ben</strong></ion-label>
+    <ion-label text-center="true"><strong>{{poi.title}}</strong></ion-label>
 
     <p> <strong>Description du point d'interêt :</strong></p>
-    <p>{{description}}</p>
+    <p>{{poi.description}}</p>
     <p>{{categorie}}</p>
     <div>
-      <button ion-button color="danger" class="bottom_button" >Pas original</button>
-      <button ion-button color="secondary" class="bottom_button">A découvrir</button>
+      <button ion-button color="danger" class="bottom_button" (click)="vote_Non()">
+        <ion-icon name="thumbs-down"> </ion-icon>Pas original</button>
+      <button ion-button color="secondary" class="bottom_button" (click)="vote_Oui()">
+        <ion-icon name="thumbs-up"> </ion-icon> A découvrir
+      </button>
     </div>
   </div>
 </ion-content>
