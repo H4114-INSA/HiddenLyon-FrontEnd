@@ -10,15 +10,15 @@ import{ProfilPage} from "../pages/profil/profil";
 
 import {User} from "../model/user.model";
 
-import { Http  } from '@angular/http';
+import { HttpClient  } from '@angular/common/http';
 
 @Injectable()
 export class AppService {
 
-
-  constructor(private http:Http) {
+  constructor(private http:HttpClient) {
   }
   registerService(params:string): Observable<any>{
+    console.log("Test appService");
     return this.http.get(params);
   }
 
@@ -27,5 +27,3 @@ export class AppService {
   }
 }
 
-//get POI /poi/all
-//

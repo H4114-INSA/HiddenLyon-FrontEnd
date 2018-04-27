@@ -22,8 +22,8 @@ export class RegisterPage {
     if(this.password==this.confPassword){
     //let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
     var params:string;
-    params="http://localhost:8080/user/all";
-    console.log("Test");
+    params="http://www.google.com";
+    console.log("Test register.ts");
     this.appService.registerService(params);}
     else{
     alert("your password doesn't match with your confirmation!");
