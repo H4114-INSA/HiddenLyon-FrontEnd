@@ -35,7 +35,7 @@
       <ion-input placeholder="Confirm password" [(ngModel)]="confPassword" type="password" name="confPassword"></ion-input>
     </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">register</button>
+  <button ion-button type="button" class="bottom_button"  method="GET" (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">register</button>
   <button ion-button class="bottom_button" routerLink="/page-login">Cancel</button>
 </div>
 

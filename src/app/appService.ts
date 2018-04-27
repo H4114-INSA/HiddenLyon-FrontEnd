@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/Rx';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -10,16 +11,16 @@ import{ProfilPage} from "../pages/profil/profil";
 
 import {User} from "../model/user.model";
 
-import { Http  } from '@angular/http';
+import { HttpClient  } from '@angular/common/http';
 
 @Injectable()
 export class AppService {
 
 
-  constructor(private http:Http) {
+  constructor(protected http:HttpClient) {
   }
-  registerService(params:string): Observable<any>{
-    return this.http.get(params);
+  registerService(params:string,user:User){
+    return this.http.post(params,user).toPromise();
   }
 
   getPOI() {

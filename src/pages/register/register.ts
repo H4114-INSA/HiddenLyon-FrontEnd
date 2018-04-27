@@ -20,11 +20,10 @@ export class RegisterPage {
   }
   register(){
     if(this.password==this.confPassword){
-    //let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
+    let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
     var params:string;
     params="http://localhost:8080/user/all";
-    console.log("Test");
-    this.appService.registerService(params);}
+    this.appService.registerService(params,user);}
     else{
     alert("your password doesn't match with your confirmation!");
   }
