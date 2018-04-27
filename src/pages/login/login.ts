@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class LoginPage {
   image: String;
+  usermail:string;
+  password:string;
   constructor() {
     this.image = '../assets/imgs/search.png';
   }

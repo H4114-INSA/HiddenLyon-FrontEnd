@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component,ViewChild,ElementRef } from '@angular/core';
+import {AppService} from "../../app/appService";
 
+declare var google;
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  appService:AppService;
+  pointVector: number[];
+  constructor() {}
+  ionViewDidLoad(){
 
-  constructor(public navCtrl: NavController) {
+  }
+  getPOI(){
+    this.appService.getPOI()
+      .subscribe(data => this.pointVector);
+  }
+
 
   }
 
-}
+
+

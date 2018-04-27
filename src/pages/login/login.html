@@ -10,15 +10,15 @@
   </div>
   <form id="marg_bot" >
     <ion-item>
-      <ion-input type="text" name="username" placeholder="e-mail"></ion-input>
+      <ion-input type="text" [(ngModel)]="usermail" name="username" placeholder="e-mail"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" name="password" placeholder="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="password"></ion-input>
     </ion-item>
   </form>
   <div>
-    <button ion-button class="bottom_button">login</button>
-    <button ion-button class="bottom_button">register</button>
+    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" routerLink="/page-home">login</button>
+    <button ion-button class="bottom_button" routerLink="/page-register">register</button>
     <button ion-button class="bottom_button">Forgotten password?</button>
   </div>
 </ion-content>

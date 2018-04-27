@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mon Profil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-tabs #myTabs>
+    <ion-tab [root]="tab1Root"></ion-tab>
+    <ion-tab [root]="tab2Root"></ion-tab>
+    <ion-tab [root]="tab3Root"></ion-tab>
+  </ion-tabs>
+
+  <div class="contenu">
+    <img class="circle-pic" src="../../assets/imgs/pp.jpg">
+      <p class="mail infos"> ceciestuneadressemail@gmail.com</p>
+    <p class="description"> Je suis lyonnais depuis quelques années et me passionne pour les coins atypiques</p>
+
+  </div>
+
+
+  <button ion-button secondary class="modif" >Modifier</button>
+
+  <ion-list>
+    <ion-list-header>
+      Mes Points Soumis
+    </ion-list-header>
+    <ion-item>Nombre de points d'intérêt soumis  <p> 100</p> </ion-item>
+    <ion-item>Nombre de points d'intérêt acceptés <p> 100</p> </ion-item>
+    <ion-item>Moyenne d'originalité <p> 4,2/5</p>  </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Mes Notes Soumises
+    </ion-list-header>
+    <ion-item>Nombre de notes données <p> 100</p> </ion-item>
+    <ion-item>Moyenne des notes données <p> 4.2/5</p> </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+     Mes Itineraires
+    </ion-list-header>
+    <ion-item>Nombre de parcours générés <p> 100</p> </ion-item>
+    <ion-item>Moyenne de km parcourus  </ion-item>
+    <ion-item>Moyenne de temps parcourus  </ion-item>
+
+  </ion-list>
+
+</ion-content>

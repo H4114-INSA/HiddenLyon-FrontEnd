@@ -1,18 +1,33 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Map</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-grid #search id="search">
+    <div id="layout">
+      <ion-searchbar id="searchbar" (ionInput)="getItems($event)"></ion-searchbar>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+      <ion-list id="list">
+        <ion-item>
+          <ion-label> <ion-icon name="pricetag"></ion-icon></ion-label>
+          <ion-select id="select" [(ngModel)]="toppings" multiple="true" cancelText="Annuler" okText="Valider">
+            <ion-option value="bacon">Bacon</ion-option>
+            <ion-option value="olives">Black Olives</ion-option>
+            <ion-option value="xcheese">Extra Cheese</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <button id="bouton" ion-button round icon-only>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-grid>
+
 </ion-content>
