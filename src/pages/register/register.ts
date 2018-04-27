@@ -13,19 +13,22 @@ export class RegisterPage {
   mail:string;
   password:string;
   bio:string;
+  path:string;
   confPassword:string;
   appService:AppService;
   constructor(serv:AppService) {
     this.appService=serv;
   }
   register(){
+    console.log("bonjour2");
     if(this.password==this.confPassword){
-    let user=new User(this.fname,this.lname,this.mail,this.password,this.bio);
+      console.log("bonjour");
+    let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.path);
     var params:string;
     params="http://localhost:8080/user/all";
     this.appService.registerService(params,user);}
     else{
-    alert("your password doesn't match with your confirmation!");
+      console.log("your password doesn't match with your confirmation!");
   }
   }
 }

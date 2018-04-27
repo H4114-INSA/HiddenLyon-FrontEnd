@@ -22,7 +22,9 @@ export class AppService {
   registerService(params:string,user:User){
     return this.http.post(params,user).toPromise();
   }
-
+  updateUser(params:string,user:User){
+    return this.http.post(params,user).toPromise();
+  }
   getPOI() {
     return this.http.get('/poi/all');
   }

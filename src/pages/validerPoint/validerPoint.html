@@ -7,27 +7,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <div class="marge">
-    <p class="label"> Votez vert si vous jugez le point d'interêt original, et si les informations sont cohérentes entre elles. </p>
+    <ion-item>
+      <ion-avatar>
+        <img src={{image}}>
+      </ion-avatar>
+    </ion-item>
 
-    <h5>Titre du point d'interêt</h5>
 
-    <img width="50%" height="auto" margin-top="3%" class="photo" src='../../assets/imgs/bb.jpg'>
+    <ion-label text-center="true"><strong>Big Ben</strong></ion-label>
 
-    <p id="categories"> <strong>Catégorie(s):</strong>
-    <li class="itemliste"> Catégorie 1</li>
-    <li class="itemliste"> Catégorie 2</li>
-    <li class="itemliste"> Catégorie 3</li>
-    </p>
-
-    <p id="descriptiont"> <strong>Description du point d'interêt :</strong></p>
-    <p id="description">
-      blablabla
-      blablablabla
-      blablablablablablabla
-    </p>
+    <p> <strong>Description du point d'interêt :</strong></p>
+    <p>{{description}}</p>
+    <p>{{categorie}}</p>
+    <div>
+      <button ion-button color="danger" class="bottom_button" >Pas original</button>
+      <button ion-button color="secondary" class="bottom_button">A découvrir</button>
+    </div>
   </div>
-
-
 </ion-content>

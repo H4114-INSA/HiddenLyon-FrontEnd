@@ -9,26 +9,42 @@
 
 <ion-content padding>
 
-  <ion-tabs #myTabs>
-    <ion-tab [root]="tab1Root"></ion-tab>
-    <ion-tab [root]="tab2Root"></ion-tab>
-    <ion-tab [root]="tab3Root"></ion-tab>
-  </ion-tabs>
-
   <div class="contenu">
-    <img class="circle-pic" src="../../assets/imgs/pp.jpg">
-      <p class="mail infos"> ceciestuneadressemail@gmail.com</p>
-    <p class="description"> Je suis lyonnais depuis quelques années et me passionne pour les coins atypiques</p>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src={{path}}>
+      </ion-avatar>
+      <ion-input [(ngModel)]="prenom" [disabled]="!modif"></ion-input>
+      <ion-input [(ngModel)]="nom" [disabled]="!modif"></ion-input>
 
+    </ion-item>
+  <ion-item>
+    <ion-textarea placeholder={{description}} [disabled]="!modif" [(ngModel)]="description" type="text" name="description" ></ion-textarea>
+  </ion-item>
+
+    <ion-input [(ngModel)]="mail"  [disabled]="!modif"></ion-input>
+
+    <ion-list *ngIf="modif">
+      <ion-list-header>To change your password:</ion-list-header>
+      <ion-item >
+       <ion-input placeholder="fill with your actual password"  [(ngModel)]="pass1"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="fill with your new password" [(ngModel)]="pass2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="confirm your new password"  [(ngModel)]="pass3"></ion-input>
+      </ion-item>
+    </ion-list>
   </div>
 
 
-  <button ion-button secondary class="modif" >Modifier</button>
+  <button *ngIf="!modif" ion-button class="modif" (click)="modifier()">Modifier</button>
+  <button *ngIf="modif" ion-button  (click)="modifier()">Annuler</button>
+  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifierBack()">Valider</button>
 
   <ion-list>
-    <ion-list-header>
-      Mes Points Soumis
-    </ion-list-header>
+    <ion-list-header>Mes Points Soumis</ion-list-header>
     <ion-item>Nombre de points d'intérêt soumis  <p> 100</p> </ion-item>
     <ion-item>Nombre de points d'intérêt acceptés <p> 100</p> </ion-item>
     <ion-item>Moyenne d'originalité <p> 4,2/5</p>  </ion-item>
