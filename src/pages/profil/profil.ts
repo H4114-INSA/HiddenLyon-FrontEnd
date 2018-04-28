@@ -16,8 +16,9 @@ import {UserExtended} from "../../model/userExtended.model";
 
 export class ProfilPage {
   modif:boolean;
-  user:User;
   userService:UserService;
+  globals: Globals;
+  user:User;
   prenom:string;
   nom:string;
   path:string;
@@ -26,13 +27,13 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
-  globals: Globals;
   page1:HomePage;
   page2:RegisterPage;
 
   constructor(serv:UserService, g: Globals) {
     this.userService=serv;
     this.globals=g;
+    this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.pathToProfilePicture);
     //Todo get details
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
@@ -79,6 +80,7 @@ export class ProfilPage {
     //TODO implement image
     var url:string="http://localhost:8080/user/update";
     this.userService.updateUser(url,this.user, this.globals.userExtended.token);
+    this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.pathToProfilePicture,this.globals.userExtended.token);
     this.modif=!this.modif;
   }
 
