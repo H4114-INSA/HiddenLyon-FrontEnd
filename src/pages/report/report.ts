@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Globals} from "../../globalVariable/globals";
+import { Report} from "../../model/Report.model";
+import{POIService} from "../../service/POIService";
 
 @Component({
   selector: 'page-report',
@@ -9,10 +11,14 @@ export class ReportPage {
   typeProb:string;
   titre:string;
   description:string;
-
-  constructor() {
-
+  poiService:POIService;
+  constructor(serv:POIService) {
+  this.poiService=serv;
   }
-
+  report(){
+    let rep=new Report(this.titre,this.description,this.typeProb);
+    var url="";
+    this.poiService.report(url,rep);
+  }
 }
 
