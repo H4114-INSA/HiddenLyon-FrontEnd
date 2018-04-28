@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+
+import{Globals} from "../../globalVariable/globals";
+
 import {UserService} from "../../service/UserService";
+
 import {User} from "../../model/user.model";
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
+import {UserExtended} from "../../model/userExtended.model";
 
 @Component({
   selector: 'page-profil',
@@ -11,8 +16,9 @@ import {RegisterPage} from "../register/register";
 export class ProfilPage {
 
   modif:boolean;
-  user:User;
   userService:UserService;
+  globals: Globals;
+  user:UserExtended;
   prenom:string;
   nom:string;
   path:string;
@@ -23,10 +29,11 @@ export class ProfilPage {
   description:string;
   page1:HomePage;
   page2:RegisterPage;
-  constructor(serv:UserService) {
+  constructor(serv:UserService,g:Globals) {
     this.userService=serv;
+    this.globals=g;
+    this.user=this.globals.userExtended
     //Todo get details
-    this.user=new User("Eric","Cantona","MU@gmail.com","password","pas de description","../../assets/imgs/bb.jpg");
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
     this.nom=this.user.lastName;
