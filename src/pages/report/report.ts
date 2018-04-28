@@ -6,7 +6,9 @@ import {Globals} from "../../globalVariable/globals";
   templateUrl: 'report.html',
 })
 export class ReportPage {
-
+  typeProb:string;
+  titre:string;
+  description:string;
 
   constructor() {
 

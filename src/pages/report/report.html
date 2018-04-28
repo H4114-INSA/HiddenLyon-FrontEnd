@@ -1,6 +1,3 @@
-
-
-
 <ion-header>
   <ion-navbar color="primary">
     <button ion-button menuToggle>
@@ -11,33 +8,22 @@
 </ion-header>
 <ion-content padding >
   <form id="form">
-
-  //todo img
     <ion-item>
-      <ion-input placeholder="First name"  [(ngModel)]="fname" type="text" name="fname"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-input placeholder="Last name" [(ngModel)]="lname" type="text" name="lname" ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input placeholder="E-mail" [(ngModel)]="mail" type="text" name="mailUser" ></ion-input>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="typeProb" name="typeProbleme">
+        <ion-option value="dupliquer">Doublon</ion-option>
+        <ion-option value="incohérent">Incohérent</ion-option>
+        <ion-option value="illicite">Illicite</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
-      <ion-textarea placeholder="Biography" ng-required="true"[(ngModel)]="bio" type="text" name="bio" ></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-input placeholder="Password" [(ngModel)]="password" type="password" name="password"></ion-input>
+      <ion-input placeholder="Titre du report*"  [(ngModel)]="titre" type="text" name="titre"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Confirm password" [(ngModel)]="confPassword" type="password" name="confPassword"></ion-input>
+      <ion-textarea placeholder="Description" [(ngModel)]="description" type="text" name="descr" ></ion-textarea>
     </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  method="GET" (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">register</button>
-  <button ion-button class="bottom_button" routerLink="/page-login">Cancel</button>
+  <button ion-button type="button" class="bottom_button"  method="GET" (click)="register()" [disabled]="!titre || !typeProb">valider</button>
 </ion-content>
 
 
