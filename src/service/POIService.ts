@@ -14,7 +14,7 @@ export class POIService {
   }
   getNextPointToValidate(){
     //todo
-    // todo return this.http.get("todo");
+     return this.http.get("todo");
   }
   voteOui(){
     //todo

@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
+
+import{Globals} from "../../globalVariable/globals";
+
 import {UserService} from "../../service/UserService";
+
 import {User} from "../../model/user.model";
-import {Globals} from "../../globalVariable/globals";
+import {HomePage} from "../home/home";
+import {RegisterPage} from "../register/register";
+import {UserExtended} from "../../model/userExtended.model";
 
 @Component({
   selector: 'page-profil',
@@ -21,12 +27,13 @@ export class ProfilPage {
   pass3:string;
   description:string;
   globals: Globals;
+  page1:HomePage;
+  page2:RegisterPage;
 
   constructor(serv:UserService, g: Globals) {
     this.userService=serv;
     this.globals=g;
     //Todo get details
-    this.user=new User("Eric","Cantona","MU@gmail.com","password","pas de description","../../assets/imgs/bb.jpg");
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
     this.nom=this.user.lastName;
@@ -46,7 +53,7 @@ export class ProfilPage {
     this.pass3=null;
     this.modif=!this.modif;
   }
-  modifier(){
+  modifierBack(){
     this.user.firstName=this.prenom;
     this.user.lastName=this.nom;
     this.user.biography=this.description;
@@ -71,6 +78,9 @@ export class ProfilPage {
     //TODO implement image
     var url:string="http://localhost:8080/user/update";
     this.userService.updateUser(url,this.user, this.globals.userExtended.token);
+    this.modif=!this.modif;
+  }
+  modifier(){
     this.modif=!this.modif;
   }
 }
