@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService";
 import {User} from "../../model/user.model";
+import {Globals} from "../../globalVariable/globals";
 
 @Component({
   selector: 'page-profil',
@@ -19,8 +20,11 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
-  constructor(serv:UserService) {
+  globals: Globals;
+
+  constructor(serv:UserService, g: Globals) {
     this.userService=serv;
+    this.globals=g;
     //Todo get details
     this.user=new User("Eric","Cantona","MU@gmail.com","password","pas de description","../../assets/imgs/bb.jpg");
     this.description=this.user.biography;
@@ -30,6 +34,7 @@ export class ProfilPage {
     this.path=this.user.pathToProfilePicture;
     this.modif=false;
   }
+
   cancel(){
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
@@ -63,9 +68,9 @@ export class ProfilPage {
         console.log("bad actual password!");
         return;}
     }
-    //TODO implement image,url
-    var url:string="lorem ipsum";
-    this.userService.updateUser(url,this.user);
+    //TODO implement image
+    var url:string="http://localhost:8080/user/update";
+    this.userService.updateUser(url,this.user, this.globals.userExtended.token);
     this.modif=!this.modif;
   }
 }
