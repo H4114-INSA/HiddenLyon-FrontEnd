@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService";
 import {User} from "../../model/user.model";
+import {HomePage} from "../home/home";
+import {RegisterPage} from "../register/register";
 
 @Component({
   selector: 'page-profil',
@@ -19,6 +21,8 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
+  page1:HomePage;
+  page2:RegisterPage;
   constructor(serv:UserService) {
     this.userService=serv;
     //Todo get details
@@ -41,7 +45,7 @@ export class ProfilPage {
     this.pass3=null;
     this.modif=!this.modif;
   }
-  modifier(){
+  modifierBack(){
     this.user.firstName=this.prenom;
     this.user.lastName=this.nom;
     this.user.biography=this.description;
@@ -66,6 +70,9 @@ export class ProfilPage {
     //TODO implement image,url
     var url:string="lorem ipsum";
     this.userService.updateUser(url,this.user);
+    this.modif=!this.modif;
+  }
+  modifier(){
     this.modif=!this.modif;
   }
 }
