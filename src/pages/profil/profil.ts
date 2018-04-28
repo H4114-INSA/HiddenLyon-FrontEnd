@@ -13,8 +13,8 @@ import {UserExtended} from "../../model/userExtended.model";
   selector: 'page-profil',
   templateUrl: 'profil.html'
 })
-export class ProfilPage {
 
+export class ProfilPage {
   modif:boolean;
   user:User;
   userService:UserService;
@@ -53,6 +53,7 @@ export class ProfilPage {
     this.pass3=null;
     this.modif=!this.modif;
   }
+
   modifierBack(){
     this.user.firstName=this.prenom;
     this.user.lastName=this.nom;
@@ -80,6 +81,7 @@ export class ProfilPage {
     this.userService.updateUser(url,this.user, this.globals.userExtended.token);
     this.modif=!this.modif;
   }
+
   modifier(){
     this.modif=!this.modif;
   }
