@@ -12,7 +12,7 @@ export class ValiderPointPage {
   categorie:string;
   constructor(serv:POIService) {
     this.poiService=serv;
-    this.poiService.getNextPointToValidate().subscribe(data => this.poi);
+    //this.poiService.getNextPointToValidate().subscribe(data => this.poi);
     //todo
     this.poi=new POI("big ben","lorem ipsum","../../assets/imgs/bb.jpg",true,false,true,false,true,true);
     this.categorie="";

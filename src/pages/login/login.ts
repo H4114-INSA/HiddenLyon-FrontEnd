@@ -13,7 +13,7 @@ export class LoginPage {
   usermail:string;
   password:string;
   userService:UserService;
-  global: Globals;
+  global : Globals;
 
   constructor(serv: UserService, g: Globals) {
     this.userService=serv;
@@ -25,7 +25,12 @@ export class LoginPage {
     var params : string;
     params = "http://localhost:8080/user/authentication";
     var query: string = "?email="+this.usermail+"&password="+this.password;
-    this.userService.loginService(params+query);
+    var token :string = btoa(this.usermail + ":" + this.password);
+
+    this.userService.loginService(params+query).then(data => {
+      this.global.userExtended = data;
+      this.global.userExtended.token = token;
+    });
   }
 
 }

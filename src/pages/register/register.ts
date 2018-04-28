@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService"
 import {User} from "../../model/user.model";
-import {Globals} from "../../globalVariable/globals";
 
 @Component({
   selector: 'page-register',
@@ -26,7 +25,7 @@ export class RegisterPage {
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);
-      }else{
+    } else{
       alert("your password doesn't match with your confirmation!");
     }
   }
