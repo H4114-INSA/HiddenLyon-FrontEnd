@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService";
 import {Globals} from "../../globalVariable/globals";
+import{Router} from "@angular/router";
+import {UserExtended} from "../../model/userExtended.model";
 
 
 @Component({
@@ -14,8 +16,10 @@ export class LoginPage {
   password:string;
   userService:UserService;
   global : Globals;
+  router:Router;
 
-  constructor(serv: UserService, g: Globals) {
+  constructor(serv: UserService, g: Globals,r:Router) {
+    this.router=r;
     this.userService=serv;
     this.global=g;
     this.image = '../assets/imgs/search.png';
@@ -31,6 +35,8 @@ export class LoginPage {
       this.global.userExtended = data;
       this.global.userExtended.token = token;
     });
+    this.global.userExtended=new UserExtended("a","a","a","a","a","a","a");
+    this.router.navigateByUrl("/page-home");
   }
 
 }

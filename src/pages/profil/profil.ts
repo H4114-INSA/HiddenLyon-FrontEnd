@@ -18,7 +18,7 @@ export class ProfilPage {
   modif:boolean;
   userService:UserService;
   globals: Globals;
-  user:UserExtended;
+  user:User;
   prenom:string;
   nom:string;
   path:string;
@@ -32,7 +32,7 @@ export class ProfilPage {
   constructor(serv:UserService,g:Globals) {
     this.userService=serv;
     this.globals=g;
-    this.user=this.globals.userExtended
+    this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.pathToProfilePicture);
     //Todo get details
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
@@ -77,6 +77,7 @@ export class ProfilPage {
     //TODO implement image,url
     var url:string="lorem ipsum";
     this.userService.updateUser(url,this.user);
+    this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.pathToProfilePicture,this.globals.userExtended.token);
     this.modif=!this.modif;
   }
   modifier(){
