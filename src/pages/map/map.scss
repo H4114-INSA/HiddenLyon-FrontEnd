@@ -1,0 +1,61 @@
+.ios, .md {
+  page-map {
+
+    .scroll {
+      height:100%
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+    }
+
+    #search {
+      position: relative;
+      z-index: 12;
+      height: 100%;
+      width: 100%;
+    }
+
+    #searchbar {
+      float:left;
+      width:50%;
+
+    }
+
+    #list {
+      float:left;
+      margin-top: 2.5%;
+      width:50%;
+      height: 80%;
+    }
+
+    #bouton {
+      z-index: 1;
+      position: absolute;
+      bottom: 20px;
+      width: 20%;
+      align-self: center;
+    }
+
+    .searchbar-input {
+      padding: 6px 40px;
+      font-size: 1.4rem;
+    }
+
+    .item-md {
+      font-size: 1.18rem;
+    }
+
+    .grid {
+      padding: 0px;
+    }
+
+    #select {
+      max-width: 100%;
+    }
+
+  }
+}
