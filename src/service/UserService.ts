@@ -27,7 +27,12 @@ export class UserService {
       .then(data => {
         return data as UserExtended;
       })
-      //.catch(this.handleError);
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred during the authentication, please check your email/password'); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
 }
