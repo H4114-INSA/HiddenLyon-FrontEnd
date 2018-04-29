@@ -9,7 +9,7 @@ import {ProfilPage} from "../pages/profil/profil";
 import {RegisterPage} from "../pages/register/register";
 import  {ValiderPointPage} from "../pages/validerPoint/validerPoint";
 import{ReportPage} from "../pages/report/report";
-
+import{ParcoursPage} from "../pages/parcours/parcours";
 
 
 const appRoutes: Routes = [
@@ -19,6 +19,7 @@ const appRoutes: Routes = [
   {path:'page-register',component:RegisterPage},
   {path:'page-validerPoint',component:ValiderPointPage},
   {path:'page-report',component:ReportPage},
+  {path:'page-parcours',component:ParcoursPage},
   {path:'',redirectTo: '/page-login', pathMatch: 'full'}
 ];
 
