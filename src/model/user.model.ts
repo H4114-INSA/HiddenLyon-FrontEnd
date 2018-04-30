@@ -4,16 +4,16 @@ export class User {
   lastName: string;
   email:string;
   biography:string;
-  pathToProfilePicture: string;
+  profilePicture: any;
   hashPassword:string;
 
 
-  constructor(fnam:string,lnam:string,mai:string,passwor:string,bi:string,path:string){
+  constructor(fnam:string,lnam:string,mai:string,passwor:string,bi:string,path: any){
     this.firstName=fnam;
     this.lastName=lnam;
     this.email=mai;
     this.hashPassword=passwor;
     this.biography=bi;
-    this.pathToProfilePicture=path;
+    this.profilePicture=path;
   }
 }
