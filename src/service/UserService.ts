@@ -1,6 +1,6 @@
 import {User} from "../model/user.model";
 import {Injectable} from "@angular/core";
-import { HttpClient  } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserExtended} from "../model/userExtended.model";
 //import {Observable} from "rxjs/Observable";
 
@@ -12,16 +12,21 @@ export class UserService {
   constructor(protected http: HttpClient) {
   }
 
-  registerService(params: string, user: User) {
-    //return this.http.post(params, user).toPromise();
-    this.http.post(params, user).subscribe();
+  registerService(params: string, user: User): Promise<User> {
+    return this.http.post(params, user)
+      .toPromise()
+      .then(data => {
+        return data as User;
+      });
+    //this.http.post(params, user).subscribe();
   }
 
-  updateUser(params: string, user: User) {
-    return this.http.post(params, user).toPromise();
+  updateUser(params: string, user: User, token: string) {
+    return this.http.post(params, user,{headers: new HttpHeaders({Authorization : 'Basic '+token})})
+      .toPromise();
   }
 
-  public loginService(params: string): Promise<UserExtended> {
+  loginService(params: string): Promise<UserExtended> {
     return this.http.get(params)
       .toPromise()
       .then(data => {

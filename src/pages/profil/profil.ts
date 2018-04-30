@@ -30,12 +30,13 @@ export class ProfilPage {
   constructor(serv:UserService,g:Globals) {
     this.userService=serv;
     this.globals=g;
-    this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.pathToProfilePicture);
+    this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.profilePicture);
+    //Todo get details
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
     this.nom=this.user.lastName;
     this.mail=this.user.email;
-    this.path=this.user.pathToProfilePicture;
+    this.path=this.user.profilePicture;
     this.modif=false;
   }
   cancel(){
@@ -43,7 +44,7 @@ export class ProfilPage {
     this.prenom=this.user.firstName;
     this.nom=this.user.lastName;
     this.mail=this.user.email;
-    this.path=this.user.pathToProfilePicture;
+    this.path=this.user.profilePicture;
     this.pass1=null;
     this.pass2=null;
     this.pass3=null;
@@ -71,10 +72,10 @@ export class ProfilPage {
         console.log("bad actual password!");
         return;}
     }
-    //TODO implement image,url
-    var url:string="lorem ipsum";
-    this.userService.updateUser(url,this.user);
-    this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.pathToProfilePicture,this.globals.userExtended.token);
+    //TODO implement image
+    var url:string="http://localhost:8080/user/update";
+    this.userService.updateUser(url,this.user, this.globals.userExtended.token);
+    this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.profilePicture,this.globals.userExtended.token);
     this.modif=!this.modif;
   }
   modifier(){
