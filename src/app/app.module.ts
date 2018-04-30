@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import  {AppRoutingModule} from "./app.routingModule";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import {UserService} from "../service/UserService";
 import{POIService} from "../service/POIService";
