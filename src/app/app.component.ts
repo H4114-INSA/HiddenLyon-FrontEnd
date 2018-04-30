@@ -3,7 +3,7 @@ import {  Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 import { LoginPage } from '../pages/login/login';
 import {ProfilPage} from "../pages/profil/profil";
 import {ValiderPointPage} from "../pages/validerPoint/validerPoint";
@@ -24,7 +24,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home',route:'/page-home', component: HomePage },
+      { title: 'Map',route:'/page-map', component: MapPage },
       { title: 'Profil',route:'/page-profil', component: ProfilPage },
       { title: 'Valider un point',route:'/page-validerPoint', component: ValiderPointPage },
       { title: 'Report',route:'/page-report', component: ReportPage },
