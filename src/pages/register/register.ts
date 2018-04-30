@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService"
 import {User} from "../../model/user.model";
+import { Globals} from "../../globalVariable/globals";
+
 //import * as bcrypt from "bcryptjs";
 
 
@@ -15,23 +17,17 @@ export class RegisterPage {
   password:string;
   bio:string;
   img:string;
+  global:Globals;
   confPassword:string;
   userService:UserService;
   byteArray:Uint8Array;
 
-  constructor(serv:UserService) {
+  constructor(serv:UserService,g:Globals) {
+    this.global=g;
     this.userService=serv;
-  }
-
-  test(){
-    var byteCharacters = atob(this.img);
-    var byteNumbers = new Array(byteCharacters.length);
-    for (var i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    this.byteArray = new Uint8Array(byteNumbers);
 
   }
+
 
   register(){
     if(this.password==this.confPassword){

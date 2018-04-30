@@ -10,10 +10,13 @@ import{POIService} from "../../service/POIService";
 export class ReportPage {
   typeProb:string;
   titre:string;
+  global:Globals;
   description:string;
   poiService:POIService;
-  constructor(serv:POIService) {
+  constructor(serv:POIService,g:Globals) {
+    this.global=g;
   this.poiService=serv;
+
   }
 
   report(){

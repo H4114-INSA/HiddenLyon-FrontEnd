@@ -11,8 +11,10 @@ export class ParametresPage {
   globals: Globals;
   constructor(g:Globals) {
     this.globals=g;
+    this.langue=this.globals.langueParam;
   }
   Apply(){
+    this.globals.langueParam=this.langue;
     this.globals.langue=new Langue(this.langue);
   }
 }

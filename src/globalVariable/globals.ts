@@ -6,9 +6,10 @@ import {Langue} from "../model/Langue.model";
 export class Globals{
   userExtended: UserExtended;
   langue:Langue;
+  langueParam:string="en";
   constructor(){
     this.userExtended=new UserExtended("a","a","a","a","a","../../assets/imgs/bb.jpg","tok");//todo
-    this.langue=new Langue("fr");
+    this.langue=new Langue(this.langueParam);
   }
 
 }
