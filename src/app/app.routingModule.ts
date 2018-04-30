@@ -13,6 +13,7 @@ import{ReportPage} from "../pages/report/report";
 import{ParcoursPage} from "../pages/parcours/parcours";
 
 import  {AddPointPage} from "../pages/addPoint/addPoint";
+import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 
 const appRoutes: Routes = [
   { path: 'page-login', component:LoginPage },
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   {path:'page-profil',component:ProfilPage},
   {path:'page-register',component:RegisterPage},
   {path:'page-addPoint',component:AddPointPage},
+  {path:'page-addPointInfos',component:AddPointInfosPage},
   {path:'page-validerPoint',component:ValiderPointPage},
   {path:'page-report',component:ReportPage},
   {path:'page-parcours',component:ParcoursPage},
