@@ -9,6 +9,7 @@ import {ProfilPage} from "../pages/profil/profil";
 import { RegisterPage} from "../pages/register/register";
 import  { ValiderPointPage} from "../pages/validerPoint/validerPoint";
 import { ReportPage} from "../pages/report/report";
+import { ParcoursPage} from "../pages/parcours/parcours";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +33,8 @@ import {AuthGuardService} from "../service/AuthGardService";
     ProfilPage,
     RegisterPage,
     ValiderPointPage,
-    ReportPage
+    ReportPage,
+    ParcoursPage
   ],
   imports: [
    AppRoutingModule,
@@ -43,9 +45,7 @@ import {AuthGuardService} from "../service/AuthGardService";
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-
     LoginPage,
-
   ],
   providers: [
     UserService,

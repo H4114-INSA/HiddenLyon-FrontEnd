@@ -2,6 +2,7 @@ import {POI} from "../model/POI.model";
 import {Injectable} from "@angular/core";
 import { HttpClient  } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
+import { Report} from "../model/Report.model";
 import 'rxjs/Rx'
 
 @Injectable()
@@ -21,6 +22,9 @@ export class POIService {
   }
   voteNon(){
     //todo
+  }
+  report(params:string,rep:Report){
+    return this.http.post(params, rep).toPromise();
   }
 
 }
