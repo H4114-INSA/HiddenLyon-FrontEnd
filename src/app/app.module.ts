@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -14,6 +13,8 @@ import { ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
 import {AddPointPage} from "../pages/addPoint/addPoint";
 import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+import { ParametresPage} from "../pages/parametres/parametres";
+import {ConditionsPage} from "../pages/conditions/conditions";
 
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -43,7 +44,9 @@ import {AuthGuardService} from "../service/AuthGardService";
     RegisterPage,
     ValiderPointPage,
     ReportPage,
-    ParcoursPage
+    ParcoursPage,
+    ParametresPage,
+    ConditionsPage
   ],
   imports: [
    AppRoutingModule,
