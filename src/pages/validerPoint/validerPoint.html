@@ -7,26 +7,38 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div class="marge">
-    <ion-item>
-      <ion-avatar>
-        <img src={{poi.path}}>
-      </ion-avatar>
-    </ion-item>
-
-
-    <ion-label text-center="true"><strong>{{poi.title}}</strong></ion-label>
-
-    <p> <strong>Description du point d'interêt :</strong></p>
-    <p>{{poi.description}}</p>
-    <p>{{categorie}}</p>
-    <div>
-      <button ion-button color="danger" class="bottom_button" (click)="vote_Non()">
-        <ion-icon name="thumbs-down"> </ion-icon>Pas original</button>
-      <button ion-button color="secondary" class="bottom_button" (click)="vote_Oui()">
-        <ion-icon name="thumbs-up"> </ion-icon> A découvrir
-      </button>
+<ion-content> 
+    <div class="marge">
+        <p class="label"> Votez vert si vous jugez le point d'interêt original, et si les informations sont cohérentes entre elles. </p>
+    
+        <h3>{{poi.title}}</h3>
+        
+        <div>
+            <img width="50%" height="auto" margin-top="3%" class="photo" src={{poi.pathToPicture}}>
+        
+        
+            <p id="categories" height="100%"> <strong>Catégorie(s):</strong>
+                <li class="itemliste"> Catégorie 1</li>
+                <li class="itemliste"> Catégorie 2</li>
+                <li class="itemliste"> Catégorie 3</li>
+            </p>
+        </div>
+        
+        
+        <p id="descriptiont"> <strong>Description du point d'interêt :</strong></p>
+        <p id="description">
+            {{poi.description}}
+        </p>
+        
+        <button id="poucerouge" ion-button round icon-only color="danger" (click)="vote_Non()">
+              <ion-icon name="thumbs-down"></ion-icon>
+        </button>
+        
+        <button id ="poucevert" ion-button round icon-only color ="secondary" (click)="vote_Oui()">
+              <ion-icon name="thumbs-up"></ion-icon>
+        </button>
+        
     </div>
-  </div>
+   
+    
 </ion-content>
