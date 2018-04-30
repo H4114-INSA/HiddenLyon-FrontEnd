@@ -9,6 +9,7 @@ import {ProfilPage} from "../pages/profil/profil";
 import {ValiderPointPage} from "../pages/validerPoint/validerPoint";
 import{ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
+import  {ParametresPage} from "../pages/parametres/parametres";
 
 
 @Component({
@@ -28,6 +29,7 @@ export class MyApp {
       { title: 'Valider un point',route:'/page-validerPoint', component: ValiderPointPage },
       { title: 'Report',route:'/page-report', component: ReportPage },
       { title: 'Parcours',route:'/page-parcours', component: ParcoursPage },
+      { title: 'Paramètres',route:'/page-parametres', component: ParametresPage },
 
     ];
 

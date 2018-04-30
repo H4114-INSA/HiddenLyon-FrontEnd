@@ -5,7 +5,7 @@ import {UserExtended} from "../model/userExtended.model";
 export class Globals{
   userExtended: UserExtended;
   constructor(){
-    this.userExtended=new UserExtended("a","a","a","a","a","../../assets/imgs/bb.jpg","tok");
+    this.userExtended=new UserExtended("a","a","a","a","a","../../assets/imgs/bb.jpg","tok");//todo
   }
 
 }

@@ -13,7 +13,6 @@ import {UserExtended} from "../../model/userExtended.model";
   selector: 'page-profil',
   templateUrl: 'profil.html'
 })
-
 export class ProfilPage {
   modif:boolean;
   userService:UserService;
@@ -27,10 +26,8 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
-  page1:HomePage;
-  page2:RegisterPage;
 
-  constructor(serv:UserService, g: Globals) {
+  constructor(serv:UserService,g:Globals) {
     this.userService=serv;
     this.globals=g;
     this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.profilePicture);
@@ -42,7 +39,6 @@ export class ProfilPage {
     this.path=this.user.profilePicture;
     this.modif=false;
   }
-
   cancel(){
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
@@ -54,7 +50,6 @@ export class ProfilPage {
     this.pass3=null;
     this.modif=!this.modif;
   }
-
   modifierBack(){
     this.user.firstName=this.prenom;
     this.user.lastName=this.nom;
@@ -83,7 +78,6 @@ export class ProfilPage {
     this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.profilePicture,this.globals.userExtended.token);
     this.modif=!this.modif;
   }
-
   modifier(){
     this.modif=!this.modif;
   }
