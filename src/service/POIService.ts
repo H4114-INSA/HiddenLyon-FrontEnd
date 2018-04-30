@@ -1,4 +1,4 @@
-import {POI} from "../model/POI.model";
+import {PointOfInterest} from "../model/PointOfInterest.model";
 import {Injectable} from "@angular/core";
 import { HttpClient  } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
