@@ -14,7 +14,6 @@ import {UserExtended} from "../../model/userExtended.model";
   templateUrl: 'profil.html'
 })
 export class ProfilPage {
-
   modif:boolean;
   userService:UserService;
   globals: Globals;
@@ -27,13 +26,11 @@ export class ProfilPage {
   pass2:string;
   pass3:string;
   description:string;
-  page1:HomePage;
-  page2:RegisterPage;
+
   constructor(serv:UserService,g:Globals) {
     this.userService=serv;
     this.globals=g;
     this.user=new User(g.userExtended.firstName,g.userExtended.lastName,g.userExtended.email,g.userExtended.hashPassword,g.userExtended.biography,g.userExtended.pathToProfilePicture);
-    //Todo get details
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
     this.nom=this.user.lastName;

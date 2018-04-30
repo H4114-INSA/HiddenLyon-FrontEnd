@@ -10,6 +10,8 @@ import { RegisterPage} from "../pages/register/register";
 import  { ValiderPointPage} from "../pages/validerPoint/validerPoint";
 import { ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
+import { ParametresPage} from "../pages/parametres/parametres";
+import {ConditionsPage} from "../pages/conditions/conditions";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +36,9 @@ import {AuthGuardService} from "../service/AuthGardService";
     RegisterPage,
     ValiderPointPage,
     ReportPage,
-    ParcoursPage
+    ParcoursPage,
+    ParametresPage,
+    ConditionsPage
   ],
   imports: [
    AppRoutingModule,
