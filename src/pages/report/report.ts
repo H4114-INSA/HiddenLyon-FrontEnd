@@ -15,10 +15,12 @@ export class ReportPage {
   constructor(serv:POIService) {
   this.poiService=serv;
   }
+
   report(){
-    let rep=new Report(this.titre,this.description,this.typeProb);
+    //todo : A refaire entièrement
+   /* let rep=new Report(this.titre,this.description,this.typeProb);
     var url="";
-    this.poiService.report(url,rep);
+    this.poiService.report(url,rep);*/
   }
 }
 

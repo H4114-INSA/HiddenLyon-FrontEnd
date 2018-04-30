@@ -1,14 +1,16 @@
+import {PointOfInterest} from "./PointOfInterest.model";
+import {User} from "./user.model";
+
 export class Report {
 
-  titre: string;
-  description:string;
-  categorie: string;
+  IdReport: number;
+  user: User;
+  point: PointOfInterest;
+  cause: Cause;
 
-
-
-  constructor(title:string,descr:string,categorie:string){
-  this.categorie=categorie;
-  this.description=descr;
-  this.titre=title;
+  constructor(user: User, point: PointOfInterest, cause: Cause) {
+    this.user = user;
+    this.point = point;
+    this.cause = cause;
   }
 }
