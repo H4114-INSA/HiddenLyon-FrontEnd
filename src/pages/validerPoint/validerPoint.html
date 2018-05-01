@@ -3,11 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Points à valider</ion-title>
+    <ion-title>{{globals.langue.validerPoint}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content> 
+<ion-content>
     <div class="marge">
         <p class="label"> Votez vert si vous jugez le point d'interêt original, et si les informations sont cohérentes entre elles. </p>
     
@@ -22,21 +22,20 @@
                 <li class="itemliste"> Catégorie 3</li>
             </p>
         </div>
-        
-        
-        <p id="descriptiont"> <strong>Description du point d'interêt :</strong></p>
+
+
+        <p id="descriptiont"> <strong>{{globals.langue.description}}:</strong></p>
         <p id="description">
             {{poi?.description}}
         </p>
-        
+
         <button id="poucerouge" ion-button round icon-only color="danger" (click)="vote_Non()">
               <ion-icon name="thumbs-down"></ion-icon>
         </button>
-        
+
         <button id ="poucevert" ion-button round icon-only color ="secondary" (click)="vote_Oui()">
               <ion-icon name="thumbs-up"></ion-icon>
         </button>
         
     </div>
-    
 </ion-content>

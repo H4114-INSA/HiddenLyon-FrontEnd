@@ -3,14 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Parcours</ion-title>
+    <ion-title>{{globals.langue.parcours}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding >
   <form id="form">
 
     <ion-item>
-      <ion-label>Catégories</ion-label>
+      <ion-label>{{globals.langue.categorie}}</ion-label>
       <ion-select [(ngModel)]="cat" name="categorie" multiple="true">
         <ion-option value="1">catégorie 1</ion-option>
         <ion-option value="2">catégorie 2</ion-option>
@@ -18,31 +18,31 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Transport</ion-label>
+      <ion-label>{{globals.langue.transport}}</ion-label>
       <ion-select [(ngModel)]="trans" name="trans" multiple="true">
-        <ion-option value="1">TCL</ion-option>
-        <ion-option value="2">Voiture</ion-option>
-        <ion-option value="3">Vélo</ion-option>
-        <ion-option value="4">A pied</ion-option>
+        <ion-option value="1">{{globals.langue.TCL}}</ion-option>
+        <ion-option value="2">{{globals.langue.voiture}}</ion-option>
+        <ion-option value="3">{{globals.langue.velo}}</ion-option>
+        <ion-option value="4">{{globals.langue.marcher}}</ion-option>
       </ion-select>
     </ion-item>
-      <h3>Remplir au moins un champs pour valider</h3>
-      <ion-label>Temps de parcours(minutes)</ion-label>
+      <h3>{{globals.langue.remplirAuMoins1Champs}}</h3>
+      <ion-label>{{globals.langue.tempsParcours}}</ion-label>
       <ion-item>
         <ion-input placeholder="Min" [(ngModel)]="tempsMin" name="tempsmin" type="number"></ion-input>
         <ion-input placeholder="Max" [(ngModel)]="tempsMax" name="tempsmax" type="number"></ion-input>
     </ion-item>
-    <ion-label>Distance de parcours(km)</ion-label>
+    <ion-label>{{globals.langue.distanceParcours}}</ion-label>
     <ion-item>
       <ion-input placeholder="Min" [(ngModel)]="distMin" name="distMin" type="number"></ion-input>
       <ion-input placeholder="Max" [(ngModel)]="distMax" name="distMax" type="number"></ion-input>
     </ion-item>
       <ion-item>
-        <ion-label>Revenir au point de départ?</ion-label>
+        <ion-label>{{globals.langue.revenirPointDepart}}</ion-label>
         <ion-checkbox [(ngModel)]="backPoint" name="back"></ion-checkbox>
       </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  method="GET" (click)="report()" [disabled]="!tempsMin && !tempsMax&& !distMin && !distMax">valider</button>
+  <button ion-button type="button" class="bottom_button"  method="GET" (click)="report()" [disabled]="!tempsMin && !tempsMax&& !distMin && !distMax">{{globals.langue.valider}}</button>
 </ion-content>
 
 

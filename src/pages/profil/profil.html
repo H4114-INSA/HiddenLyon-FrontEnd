@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Mon Profil</ion-title>
+    <ion-title>{{globals.langue.profilTitre}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -26,23 +26,23 @@
     <ion-input [(ngModel)]="mail"  [disabled]="!modif"></ion-input>
 
     <ion-list *ngIf="modif">
-      <ion-list-header>To change your password:</ion-list-header>
+      <ion-list-header>{{globals.langue.toChangePassword}}</ion-list-header>
       <ion-item >
-       <ion-input placeholder="fill with your actual password"  [(ngModel)]="pass1"></ion-input>
+       <ion-input placeholder={{globals.langue.fillActualPassword}}  [(ngModel)]="pass1"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="fill with your new password" [(ngModel)]="pass2"></ion-input>
+        <ion-input placeholder={{globals.langue.fillNewPassword}} [(ngModel)]="pass2"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="confirm your new password"  [(ngModel)]="pass3"></ion-input>
+        <ion-input placeholder={{globals.langue.confirmNewPassword}} [(ngModel)]="pass3"></ion-input>
       </ion-item>
     </ion-list>
   </div>
 
 
-  <button *ngIf="!modif" ion-button class="modif" (click)="modifier()">Modifier</button>
-  <button *ngIf="modif" ion-button  (click)="cancel()">Annuler</button>
-  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifierBack()">Valider</button>
+  <button *ngIf="!modif" ion-button class="modif" (click)="modifier()">{{globals.langue.modifier}}</button>
+  <button *ngIf="modif" ion-button  (click)="cancel()">{{globals.langue.cancel}}</button>
+  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifierBack()">{{globals.langue.valider}}</button>
 
   <ion-list>
     <ion-list-header>Mes Points Soumis</ion-list-header>

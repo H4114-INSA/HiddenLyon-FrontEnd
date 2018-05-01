@@ -3,37 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Paramètres</ion-title>
+    <ion-title>{{globals.langue.parametres}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding >
   <form id="form">
 
     <ion-item>
-      <ion-label>Langue:</ion-label>
+      <ion-label>{{globals.langue.langue}}:</ion-label>
       <ion-select [(ngModel)]="langue" name="categorie">
-        <ion-option value="fr">Français</ion-option>
-        <ion-option value="an">Anglais</ion-option>
-        <ion-option value="ru">Russe</ion-option>
+        <ion-option value="fr">{{globals.langue.fr}}</ion-option>
+        <ion-option value="en">{{globals.langue.en}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Autoriser le partage des données</ion-label>
+      <ion-label>{{globals.langue.patageData}}</ion-label>
       <ion-checkbox [(ngModel)]="dataShare" name="share" item-end></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>Autoriser la géolocalisation</ion-label>
+      <ion-label>{{globals.langue.geoloc}}</ion-label>
       <ion-checkbox [(ngModel)]="geoLoc" name="loc" item-end></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>Autoriser les notifications</ion-label>
+      <ion-label>{{globals.langue.notif}}</ion-label>
       <ion-checkbox [(ngModel)]="notif" name="notif" item-end></ion-checkbox>
     </ion-item>
     <ion-item routerLink="/page-conditions">
-      <ion-label>Conditions d'utilisation</ion-label>
+      <ion-label>{{globals.langue.conditions}}</ion-label>
     </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  method="GET" (click)="apply()">Appliquer</button>
+  <button ion-button type="button" class="bottom_button"  (click)="Apply()">{{globals.langue.appliquer}}</button>
 </ion-content>
 
 

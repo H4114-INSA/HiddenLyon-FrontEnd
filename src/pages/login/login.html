@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title text-center="50%">Login/Register</ion-title>
+    <ion-title text-center="50%">{{global.langue.titleLog}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,16 +10,16 @@
   </div>
   <form id="marg_bot" >
     <ion-item>
-      <ion-input type="text" [(ngModel)]="usermail" name="username" placeholder="e-mail"></ion-input>
+      <ion-input type="text" [(ngModel)]="usermail" name="username" placeholder={{global.langue.email}}></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="{{global.langue.password}}"></ion-input>
     </ion-item>
   </form>
   <div>
-    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" method = "GET" (click)="login()">login</button>
-    <button ion-button class="bottom_button" routerLink="/page-register" >register</button>
+    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" method = "GET" (click)="login()">{{global.langue.login}}</button>
+    <button ion-button class="bottom_button" routerLink="/page-register" >{{global.langue.register}}</button>
     //todo forgotten
-    <button ion-button class="bottom_button">Forgotten password?</button>
+    <button ion-button class="bottom_button">{{global.langue.forgottenPassword}}</button>
   </div>
 </ion-content>
