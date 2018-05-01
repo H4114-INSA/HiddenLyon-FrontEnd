@@ -11,7 +11,9 @@
 
   <form id="form" method="post" action="reception.php" enctype="multipart/form-data">
     <ion-item>
-      <input type="file" [(ngModel)]="img" name="img">
+    
+      <img id="avatar" src="">
+      <input type="file" id="img" (change)="getImage()">
 
     </ion-item>
     <p>{{byteArray}}</p>

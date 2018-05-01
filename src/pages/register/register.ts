@@ -46,5 +46,22 @@ export class RegisterPage {
       alert("your password doesn't match with your confirmation!");
     }
   }
+  
+  getImage(event){
+
+   var reader = new FileReader();
+   reader.onload = function (e) {
+       
+       //console.log(e.target.result);
+       this.img=e.target.result;
+       //console.log(this.img);
+       document.getElementById("avatar").src = this.img;
+       let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.img);
+       console.log(user);
+       
+   };
+   reader.readAsDataURL(document.getElementById("img").files[0]);
+ }
+ 
 }
 

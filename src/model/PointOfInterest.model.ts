@@ -21,10 +21,4 @@ export class PointOfInterest {
     this.owner = user;
     this.categories=listCategory;
   }
-  
-  constructor(title:string, description: string, picture: ByteString){
-    this.title=title;
-    this.description=description;
-    this.picture=picture;
-  }
 }
