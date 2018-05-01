@@ -31,12 +31,12 @@ export class RegisterPage {
 
   register(){
     if(this.password==this.confPassword){
-
      // var hash = bcrypt.hashSync(this.password, 10);
-
-      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.img); // todo hash
       var params:string;
       params="http://localhost:8080/user/add";
+
+      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.img); // todo hash
+      console.log(user);
       this.userService.registerService(params,user);
     } else{
       alert("your password doesn't match with your confirmation!");
@@ -46,7 +46,7 @@ export class RegisterPage {
   getImage(event){
 
    var reader = new FileReader();
-   reader.onload = function (e) {
+   reader.onload = function (e : any) {
 
        //console.log(e.target.result);
        this.img=e.target.result;
