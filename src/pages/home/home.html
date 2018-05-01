@@ -10,8 +10,10 @@
 <ion-content>
 
   <ion-grid #search id="search">
+    <div id="map"></div>
     <div id="layout">
       <ion-searchbar id="searchbar" (ionInput)="getItems($event)"></ion-searchbar>
+    </div>
 
       <ion-list id="list">
         <ion-item>
@@ -23,9 +25,8 @@
           </ion-select>
         </ion-item>
       </ion-list>
-    </div>
 
-    <button id="bouton" ion-button round icon-only>
+    <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-grid>

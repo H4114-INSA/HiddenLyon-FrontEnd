@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ajouter un Point d'intérêt</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p> Prenez en photo votre point d'intérêt de manière bien visible</p>
+
+
+  <form>
+
+    <input type="file" accept="image/*">
+
+    <button id="bouton" ion-button round icon-only>
+      <ion-icon name="camera"></ion-icon>
+   </button>
+    <button  ion-button secondary routerLink="/page-addPointInfos">
+      Valider
+    </button>
+
+  </form>
+
+</ion-content>
