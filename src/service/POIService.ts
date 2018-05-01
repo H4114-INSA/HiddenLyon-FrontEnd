@@ -11,7 +11,7 @@ export class POIService {
   constructor(protected http:HttpClient) {
   }
   getPOI() {
-    return this.http.get('/poi/all');
+    return this.http.get('/poi/allValid');
   }
   getNextPointToValidate(){
     //todo
@@ -23,7 +23,7 @@ export class POIService {
   voteNon(){
     //todo
   }
-  report(params:string,rep:Report){
+  reportBack(params:string,rep:Report){
     return this.http.post(params, rep).toPromise();
   }
 

@@ -21,8 +21,7 @@ export class HomePage {
 
   getPOI(){
     //console.log(this.global.userExtended.token);
-    this.poiService.getPOI()
-      .subscribe(data => this.pointVector);
+    this.poiService.getPOI().subscribe(data => this.pointVector);
   }
 
   }

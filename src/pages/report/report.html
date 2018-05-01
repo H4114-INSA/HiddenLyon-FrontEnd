@@ -11,9 +11,9 @@
     <ion-item>
       <ion-label>{{global.langue.categorie}}</ion-label>
       <ion-select [(ngModel)]="typeProb" name="typeProbleme">
-        <ion-option value="dupliquer">{{global.langue.doublon}}</ion-option>
-        <ion-option value="incohérent">{{global.langue.incoherent}}</ion-option>
-        <ion-option value="illicite">{{global.langue.illicite}}</ion-option>
+        <ion-option value="Duplicate">{{global.langue.doublon}}</ion-option>
+        <ion-option value="Incoherent">{{global.langue.incoherent}}</ion-option>
+        <ion-option value="Illicite">{{global.langue.illicite}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -23,7 +23,7 @@
       <ion-textarea placeholder={{global.langue.description}} [(ngModel)]="description" type="text" name="descr" ></ion-textarea>
     </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  method="GET" (click)="report()" [disabled]="!titre || !typeProb">{{global.langue.valider}}</button>
+  <button ion-button type="button" class="bottom_button"  method="GET" (click)="reportService()" [disabled]="!titre || !typeProb">{{global.langue.valider}}</button>
 </ion-content>
 
 
