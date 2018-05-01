@@ -11,7 +11,7 @@ export class POIService {
   constructor(protected http:HttpClient) {
   }
   getPOI() {
-    return this.http.get('/poi/all');
+    return this.http.get('/poi/allValid');
   }
   getNextPointToValidate(){
     //todo
