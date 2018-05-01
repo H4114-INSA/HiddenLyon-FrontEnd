@@ -4,7 +4,7 @@ export class User {
   lastName: string;
   email:string;
   biography:string;
-  profilePicture: any;
+  pathToProfilePicture: any;
   hashPassword:string;
 
 
@@ -14,6 +14,6 @@ export class User {
     this.email=mai;
     this.hashPassword=passwor;
     this.biography=bi;
-    this.profilePicture=path;
+    this.pathToProfilePicture=path;
   }
 }
