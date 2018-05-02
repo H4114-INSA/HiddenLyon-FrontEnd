@@ -14,6 +14,7 @@ export class ValiderPointPage {
   poiService:POIService;
   globals:Globals;
   categorie:string;
+
   constructor(serv:POIService,g:Globals) {
     this.poiService=serv;
     this.globals=g;

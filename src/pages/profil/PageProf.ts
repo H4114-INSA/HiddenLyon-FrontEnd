@@ -10,7 +10,7 @@ import {UserExtended} from "../../model/userExtended.model";
 
 @Component({
   selector: 'pageProf',
-  templateUrl: 'pageProf.html',
+  templateUrl: 'PageProf.html',
 })
 
 export class PageProf {
