@@ -20,12 +20,10 @@ export class RegisterPage {
   global:Globals;
   confPassword:string;
   userService:UserService;
-  byteArray:Uint8Array;
 
   constructor(serv:UserService,g:Globals) {
     this.global=g;
     this.userService=serv;
-
   }
 
 

@@ -10,11 +10,34 @@
 <ion-content padding>
   <img class="photo" src="../../assets/imgs/bb.jpg">
 
-  <button id="bouton" ion-button round icon-only>
+  <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
     <ion-icon ios="ios-undo" md="md-undo"></ion-icon>
   </button>
 
   <form>
-
+    <ion-item>
+      <ion-input placeholder="Titre*"  [(ngModel)]="titre" type="text" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Point temporaire?</ion-label>
+      <ion-checkbox [(ngModel)]="tempo" name="tempo" item-end></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="tempo">
+      <ion-label>fin de validité:</ion-label>
+      <ion-input  [{ngModel}]="date" type="date" item-end></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Catégorie(s):</ion-label>
+      <ion-select [(ngModel)]="cat" name="categorie" multiple="true">
+        <ion-option value="1">catégorie 1</ion-option>
+        <ion-option value="2">catégorie 2</ion-option>
+        <ion-option value="3">catégorie 3</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder="Description" [(ngModel)]="descr" type="text" name="descr" ></ion-textarea>
+    </ion-item>
 </form>
+  <button ion-button routerLink="/page-map">Cancel</button>
+  <button ion-button type="button" (click)="addPoint()" [disabled]="!cat || !titre ">Valider</button>
 </ion-content>

@@ -13,20 +13,17 @@ import { ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
 import {AddPointPage} from "../pages/addPoint/addPoint";
 import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
-
 import { ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";
-import {AddPointPage} from "../pages/addPoint/addPoint";
-import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 
 
-import { Geolocation } from '@ionic-native/geolocation';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import  {AppRoutingModule} from "./app.routingModule";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Geolocation } from '@ionic-native/geolocation';
+//import { Geolocation } from '@ionic-native/geolocation';
 
 import {UserService} from "../service/UserService";
 import{POIService} from "../service/POIService";
@@ -71,7 +68,7 @@ import {AuthGuardService} from "../service/AuthGardService";
     Globals,
     StatusBar,
     SplashScreen,
-    Geolocation,
+   // Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

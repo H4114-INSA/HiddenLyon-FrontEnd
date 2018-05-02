@@ -6,9 +6,17 @@ import {NavController} from 'ionic-angular';
   templateUrl: 'addPointInfos.html'
 })
 export class AddPointInfosPage {
-
+  titre:string;
+  cat:[string];
+  descr:string;
+  tempo:boolean;
+  date:Date;
   constructor() {
-
+  this.tempo=false;
   }
 
+  addPoint(){
+
+
+  }
 }
