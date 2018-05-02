@@ -5,7 +5,6 @@ import{Globals} from "../../globalVariable/globals";
 import {UserService} from "../../service/UserService";
 
 import {User} from "../../model/user.model";
-import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
 import {UserExtended} from "../../model/userExtended.model";
 

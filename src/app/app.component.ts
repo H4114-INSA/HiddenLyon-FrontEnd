@@ -11,7 +11,6 @@ import{ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
 import  {ParametresPage} from "../pages/parametres/parametres";
 import {Globals} from "../globalVariable/globals";
-import {HomePage} from "../pages/home/home";
 
 
 @Component({

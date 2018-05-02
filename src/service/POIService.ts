@@ -24,12 +24,15 @@ export class POIService {
     //todo
      return this.http.get("todo");
   }
+
   voteOui(){
     //todo
   }
+
   voteNon(){
     //todo
   }
+
   report(params:string,rep:Report){
     return this.http.post(params, rep).toPromise();
   }
