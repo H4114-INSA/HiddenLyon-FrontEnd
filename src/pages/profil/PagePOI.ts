@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: 'pagePOI',
-  templateUrl: 'pagePOI.html',
+  templateUrl: 'PagePOI.html',
 })
 
 export class PagePOI {}
