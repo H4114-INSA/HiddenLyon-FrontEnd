@@ -12,12 +12,8 @@ export class UserService {
   constructor(protected http: HttpClient) {
   }
 
-  registerService(params: string, user: User): Promise<User> {
-    return this.http.post(params, user)
-      .toPromise()
-      .then(data => {
-        return data as User;
-      });
+  registerService(params: string, user: User){
+    this.http.post(params, user).subscribe();
     //this.http.post(params, user).subscribe();
   }
 

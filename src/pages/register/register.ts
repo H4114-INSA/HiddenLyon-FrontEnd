@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import {UserService} from "../../service/UserService"
 import {User} from "../../model/user.model";
 import { Globals} from "../../globalVariable/globals";
+import {UserExtended} from "../../model/userExtended.model";
 
-//import * as bcrypt from "bcryptjs";
+import * as bcrypt from "bcryptjs";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class RegisterPage {
   confPassword:string;
   userService:UserService;
 
+
   constructor(serv:UserService,g:Globals) {
     this.global=g;
     this.userService=serv;
@@ -29,10 +31,11 @@ export class RegisterPage {
 
   register(){
     if(this.password==this.confPassword){
+      this.img = (<HTMLParagraphElement>document.getElementById("url")).innerHTML;
+      console.log(this.img);
+      var hash = bcrypt.hashSync(this.password, 10);
 
-     // var hash = bcrypt.hashSync(this.password, 10);
-
-      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.img); // todo hash
+      let user=new User(this.fname,this.lname,this.mail,hash,this.bio,this.img);
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);
@@ -40,5 +43,19 @@ export class RegisterPage {
       alert("your password doesn't match with your confirmation!");
     }
   }
+
+
+  getImage(event){
+
+    var reader = new FileReader();
+    reader.onloadend = function(e : any) {
+        (<HTMLImageElement>document.getElementById("avatar")).src = e.target.result;
+        (<HTMLParagraphElement>document.getElementById("url")).innerHTML = e.target.result;
+    };
+    reader.readAsDataURL((<HTMLInputElement>document.getElementById("img")).files[0]);
+  }
+
+
+
 }
 

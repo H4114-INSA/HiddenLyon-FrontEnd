@@ -27,7 +27,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: this.global.langue.map,route:'/page-home', component: MapPage },
+      { title: this.global.langue.map,route:'/page-map', component: MapPage },
       { title: this.global.langue.profil,route:'/page-profil', component: ProfilPage },
       { title: this.global.langue.validerPoint,route:'/page-validerPoint', component: ValiderPointPage },
       { title: this.global.langue.report,route:'/page-report', component: ReportPage },
