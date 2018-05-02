@@ -4,7 +4,7 @@ import{AuthGuardService} from "../service/AuthGardService";
 
 
 import { LoginPage } from "../pages/login/login";
-import { HomePage } from "../pages/home/home";
+import { MapPage } from "../pages/map/map";
 import {ProfilPage} from "../pages/profil/profil";
 import {RegisterPage} from "../pages/register/register";
 import  {ValiderPointPage} from "../pages/validerPoint/validerPoint";
@@ -16,12 +16,17 @@ import {PageStat} from "../pages/profil/PageStat";
 import {PageProf} from "../pages/profil/PageProf";
 import {PagePOI} from "../pages/profil/PagePOI";
 
+import  {AddPointPage} from "../pages/addPoint/addPoint";
+import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+
 
 const appRoutes: Routes = [
-  {path: 'page-login', component:LoginPage },
-  {path:'page-home',component:HomePage,canActivate: [AuthGuardService]},
+  { path: 'page-login', component:LoginPage },
+  {path:'page-home',component:MapPage,canActivate: [AuthGuardService]},
   {path:'page-profil',component:ProfilPage},
   {path:'page-register',component:RegisterPage},
+  {path:'page-addPoint',component:AddPointPage},
+  {path:'page-addPointInfos',component:AddPointInfosPage},
   {path:'page-validerPoint',component:ValiderPointPage},
   {path:'page-report',component:ReportPage},
   {path:'page-parcours',component:ParcoursPage},

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color = "primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Map</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div #map id="map"></div>
+  <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <div id="layout">
+    <ion-searchbar id="searchbar" (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-list id="list">
+    <ion-item>
+      <ion-label> <ion-icon name="pricetag"></ion-icon></ion-label>
+      <ion-select id="select" [(ngModel)]="toppings" multiple="true" cancelText="Annuler" okText="Valider">
+        <ion-option value="bacon">Bacon</ion-option>
+        <ion-option value="olives">Black Olives</ion-option>
+        <ion-option value="xcheese">Extra Cheese</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  </div>
+
+</ion-content>
