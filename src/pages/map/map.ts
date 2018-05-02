@@ -83,8 +83,9 @@ export class MapPage {
   }
   
   traitementPoints() {
+    let coords: Array<google.maps.LatLng> =[];
     for(i=0;i<this.points.length;i++){
-            let coords: Array<google.maps.LatLng> =[];
+            
             let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
             coords[i] = latLng;
         }
