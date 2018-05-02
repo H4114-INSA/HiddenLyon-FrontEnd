@@ -12,13 +12,17 @@ import{ReportPage} from "../pages/report/report";
 import{ParcoursPage} from "../pages/parcours/parcours";
 import {ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";
+import {PageStat} from "../pages/profil/PageStat";
+import {PageProf} from "../pages/profil/PageProf";
+import {PagePOI} from "../pages/profil/PagePOI";
 
 import  {AddPointPage} from "../pages/addPoint/addPoint";
 import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 
+
 const appRoutes: Routes = [
   { path: 'page-login', component:LoginPage },
-  {path:'page-map',component:MapPage, canActivate: [AuthGuardService]},
+  {path:'page-home',component:MapPage,canActivate: [AuthGuardService]},
   {path:'page-profil',component:ProfilPage},
   {path:'page-register',component:RegisterPage},
   {path:'page-addPoint',component:AddPointPage},
@@ -28,6 +32,9 @@ const appRoutes: Routes = [
   {path:'page-parcours',component:ParcoursPage},
   {path:'page-parametres',component:ParametresPage},
   {path:'page-conditions',component:ConditionsPage},
+  {path:'pageProf', component:PageProf},
+  {path:'pagePOI', component:PagePOI},
+  {path:'pageStat', component:PageStat},
   {path:'',redirectTo: '/page-login', pathMatch: 'full'}
 ];
 

@@ -12,8 +12,13 @@ import { ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
 import {AddPointPage} from "../pages/addPoint/addPoint";
 import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+
 import { ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";
+import {PageStat} from "../pages/profil/PageStat";
+import {PageProf} from "../pages/profil/PageProf";
+import {PagePOI} from "../pages/profil/PagePOI";
+
 //import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +48,10 @@ import {AuthGuardService} from "../service/AuthGardService";
     ReportPage,
     ParcoursPage,
     ParametresPage,
-    ConditionsPage
+    ConditionsPage,
+    PageProf,
+    PagePOI,
+    PageStat
   ],
   imports: [
    AppRoutingModule,

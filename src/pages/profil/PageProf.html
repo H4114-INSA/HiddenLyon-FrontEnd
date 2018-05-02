@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mon profil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="contenu">
+
+      <ion-avatar class="avatar" >
+        <img src={{path}}>
+      </ion-avatar>
+
+    <ion-item>
+      <ion-input [(ngModel)]="prenom" [disabled]="!modif"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="nom" [disabled]="!modif"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea placeholder={{description}} [disabled]="!modif" [(ngModel)]="description" type="text" name="description" ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input [(ngModel)]="mail"  [disabled]="!modif"></ion-input>
+    </ion-item>
+
+    <ion-list *ngIf="modif">
+      <ion-list-header>{{globals.langue.toChangePassword}}</ion-list-header>
+      <ion-item >
+        <ion-input placeholder={{globals.langue.fillActualPassword}}  [(ngModel)]="pass1"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder={{globals.langue.fillNewPassword}} [(ngModel)]="pass2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder={{globals.langue.confirmNewPassword}} [(ngModel)]="pass3"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <button *ngIf="!modif" ion-button class="modif" (click)="modifier()">{{globals.langue.modifier}}</button>
+  <button *ngIf="modif" ion-button class="cancel" (click)="cancel()">{{globals.langue.cancel}}</button>
+  <button *ngIf="modif" ion-button color="secondary" class="modif" (click)="modifierBack()">{{globals.langue.valider}}</button>
+
+
+</ion-content>
