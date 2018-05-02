@@ -36,6 +36,21 @@ export class POIService {
   addPointTempo(params:string,poi:TemporaryPointOfInterest){
     this.http.post(params, poi).subscribe();
   }
+
+  getNumberSubPoint(params:string,token:string):Promise<number>{
+    return this.http.get(params, {headers: new HttpHeaders({Authorization : 'Basic '+token})})
+      .toPromise()
+      .then(data => {
+        return data as number;
+      });
+  }
+  getNumberValPoint(params:string,token:string):Promise<number>{
+    return this.http.get(params, {headers: new HttpHeaders({Authorization : 'Basic '+token})})
+      .toPromise()
+      .then(data => {
+        return data as number;
+      });
+  }
   getNextPointToValidate(){
     //todo
      return this.http.get("todo");
