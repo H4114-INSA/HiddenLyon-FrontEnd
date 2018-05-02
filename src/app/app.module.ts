@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import {LoginPage} from "../pages/login/login";
 import {ProfilPage} from "../pages/profil/profil";
@@ -35,7 +34,6 @@ import {AuthGuardService} from "../service/AuthGardService";
 
   declarations: [
     MyApp,
-    HomePage,
     LoginPage,
     ProfilPage,
     AddPointPage,
