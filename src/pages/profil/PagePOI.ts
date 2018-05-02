@@ -21,7 +21,7 @@ export class PagePOI {
     this.getUserPOI();
   }
   getUserPOI(){
-    var url:string="/poi/getUserPoi?="+this.global.userExtended.email;
+    var url:string="http://localhost:8080/poi/getUserPoi?mailUser="+this.global.userExtended.email;
     this.poiService.getUserValidatedPoi(url,this.global.userExtended.token).then(data => {
       this.poiArray = data;
     }).catch(err =>{

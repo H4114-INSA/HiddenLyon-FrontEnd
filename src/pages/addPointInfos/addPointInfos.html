@@ -28,10 +28,8 @@
     </ion-item>
     <ion-item>
       <ion-label>Catégorie(s):</ion-label>
-      <ion-select [(ngModel)]="cat" name="categorie" multiple="true">
-        <ion-option value="1">catégorie 1</ion-option>
-        <ion-option value="2">catégorie 2</ion-option>
-        <ion-option value="3">catégorie 3</ion-option>
+      <ion-select [(ngModel)]="catSelect" name="categorie" multiple="true">
+        <ion-option *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -39,5 +37,5 @@
     </ion-item>
 </form>
   <button ion-button routerLink="/page-map">Cancel</button>
-  <button ion-button type="button" (click)="addPoint()" [disabled]="!cat || !titre ">Valider</button>
+  <button ion-button type="button" (click)="addPoint()" [disabled]="!catSelect || !titre ">Valider</button>
 </ion-content>
