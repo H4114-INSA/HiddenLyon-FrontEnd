@@ -18,7 +18,7 @@ export class MapPage {
   poiService:POIService;
   globals: Globals;
 
-  constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
+  constructor( serv: POIService, g: Globals) {//public geolocation: Geolocation,
     this.poiService=serv;
     this.globals=g;
   }
@@ -58,11 +58,11 @@ export class MapPage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-      /*var marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: latLng,
         map: this.map,
         title: "Hello World!"
-      });*/
+      });
 
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -94,7 +94,7 @@ export class MapPage {
         this.ajouterMarqueurs(coords);
         }
 
-  markerOnClick() {
+  markerOnClick(){
     console.log("marqueur");
   }
 

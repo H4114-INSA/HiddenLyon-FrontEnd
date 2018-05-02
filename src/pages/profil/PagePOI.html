@@ -14,10 +14,17 @@
     <ion-list-header>
       Mes points d'intérêt
     </ion-list-header>
-    <ion-item *ngFor="let point of poiArray">
+    <ion-list *ngFor="let point of poiArray">
+      <ion-item>
+      <img src={{point?.picture}}>
+      </ion-item>
+      <ion-item>
       <ion-label>{{point.title}}</ion-label>
-      <ion-textarea>{{point.description}}</ion-textarea>
-    </ion-item>
+      </ion-item>
+      <ion-item>
+      <ion-textarea placeholder={{point.description}} disabled></ion-textarea>
+      </ion-item>
+    </ion-list>
   </ion-list>
 
 </ion-content>

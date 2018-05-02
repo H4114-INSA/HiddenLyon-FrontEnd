@@ -4,8 +4,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import { Report} from "../model/Report.model";
 import {UserExtended} from "../model/userExtended.model";
+
 import 'rxjs/Rx'
 import {TemporaryPointOfInterest} from "../model/TemporaryPointOfInterest.model";
+import {User} from "../model/user.model";
 
 @Injectable()
 export class POIService {
@@ -21,6 +23,13 @@ export class POIService {
         });
   }
 
+  getUserValidatedPoi(param:string,token:string): Promise<Array<PointOfInterest>> {
+    return this.http.get(param, {headers: new HttpHeaders({Authorization : 'Basic '+token})})
+      .toPromise()
+      .then(data => {
+        return data as Array<PointOfInterest>;
+      });
+  }
   addPoint(params:string,poi:PointOfInterest){
     this.http.post(params, poi).subscribe();
   }
