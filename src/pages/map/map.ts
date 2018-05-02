@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
+import { ToastController } from 'ionic-angular';
 
 declare var google;
 
@@ -12,7 +13,7 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public geolocation: Geolocation) {
+  constructor(public geolocation: Geolocation, private toastCtrl: ToastController) {
 
   }
 
@@ -30,6 +31,7 @@ export class MapPage {
       let mapOptions = {
         center: latLng,
         zoom: 15,
+        streetViewControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
@@ -38,7 +40,7 @@ export class MapPage {
       var marker = new google.maps.Marker({
         position: latLng,
         map: this.map,
-        title: "Hello World!"
+        title: "You are here!"
       });
 
 
@@ -46,6 +48,20 @@ export class MapPage {
       console.log(err);
     });
 
+  }
+
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'User was added successfully',
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }
