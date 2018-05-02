@@ -12,13 +12,15 @@
 
 
   <form>
-
-    <input type="file" accept="image/*">
-
+    <ion-item>
+      <img id="avatar" src="">
+      <p id="url" hidden></p>
+      <input type="file" id="img" (change)="getImage()">
+    </ion-item>
     <button id="bouton" ion-button round icon-only>
       <ion-icon name="camera"></ion-icon>
    </button>
-    <button  ion-button secondary routerLink="/page-addPointInfos">
+    <button  ion-button secondary (click)="sendData()" routerLink="/page-addPointInfos">
       Valider
     </button>
 

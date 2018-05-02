@@ -4,6 +4,7 @@ import { HttpClient  } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import { Report} from "../model/Report.model";
 import 'rxjs/Rx'
+import {TemporaryPointOfInterest} from "../model/TemporaryPointOfInterest.model";
 
 @Injectable()
 export class POIService {
@@ -16,6 +17,13 @@ export class POIService {
       .then(data =>{
         return data as Array<PointOfInterest>;
       });
+  }
+
+  addPoint(params:string,poi:PointOfInterest){
+    this.http.post(params, poi).subscribe();
+  }
+  addPointTempo(params:string,poi:TemporaryPointOfInterest){
+    this.http.post(params, poi).subscribe();
   }
   getNextPointToValidate(){
     //todo

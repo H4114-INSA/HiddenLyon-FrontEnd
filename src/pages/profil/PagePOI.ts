@@ -1,8 +1,18 @@
 import {Component} from "@angular/core";
+import {PointOfInterest} from "../../model/PointOfInterest.model";
+import {POIService} from "../../service/POIService";
 
 @Component({
   selector: 'pagePOI',
   templateUrl: 'pagePOI.html',
 })
 
-export class PagePOI {}
+export class PagePOI {
+
+  poiService : POIService;
+  poiArray : Array<PointOfInterest>;
+
+  constructor(poiS:POIService){
+    this.poiService=poiS;
+  }
+}
