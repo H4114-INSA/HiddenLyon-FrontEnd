@@ -33,8 +33,8 @@ export class POIService {
     //todo
   }
 
-  report(params:string,rep:Report){
-    return this.http.post(params, rep).toPromise();
+  reportBack(params:string,rep:Report){
+    return this.http.post(params, rep).subscribe();
   }
 
   private handleError(error: any): Promise<any> {
