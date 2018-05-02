@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import {LoginPage} from "../pages/login/login";
 import {ProfilPage} from "../pages/profil/profil";
@@ -17,6 +16,9 @@ import {InfosPointPage} from "../pages/infosPoint/infosPoint";
 
 import { ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";
+import {PageStat} from "../pages/profil/PageStat";
+import {PageProf} from "../pages/profil/PageProf";
+import {PagePOI} from "../pages/profil/PagePOI";
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,7 +38,6 @@ import {AuthGuardService} from "../service/AuthGardService";
 
   declarations: [
     MyApp,
-    HomePage,
     LoginPage,
     ProfilPage,
     AddPointPage,
@@ -48,7 +49,10 @@ import {AuthGuardService} from "../service/AuthGardService";
     ReportPage,
     ParcoursPage,
     ParametresPage,
-    ConditionsPage
+    ConditionsPage,
+    PageProf,
+    PagePOI,
+    PageStat
   ],
   imports: [
    AppRoutingModule,

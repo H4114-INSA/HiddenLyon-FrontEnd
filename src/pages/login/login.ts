@@ -30,7 +30,7 @@ export class LoginPage {
     this.userService.loginService(params+query).then(data => {
       this.global.userExtended = data;
       this.global.userExtended.token = btoa(this.usermail+":"+data.hashPassword);
-      this.router.navigateByUrl("/page-home");
+      this.router.navigateByUrl("/page-map");
     }).catch(err =>{
 
     });
