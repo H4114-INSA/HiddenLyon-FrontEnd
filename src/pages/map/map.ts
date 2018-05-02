@@ -21,6 +21,22 @@ export class MapPage {
     this.loadMap();
 
   }
+  
+  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
+        var i:number;
+        
+        for(i=0;i<coords.length;i++) {
+            var marker = new google.maps.Marker({
+            position: coords[i],
+            map: this.map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            });
+            google.maps.event.addDomListener(marker, 'click', function() {
+                console.log("marqueur");
+                
+            });
+        }
+   }
 
   loadMap(){
 
@@ -35,11 +51,20 @@ export class MapPage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-      var marker = new google.maps.Marker({
+      /*var marker = new google.maps.Marker({
         position: latLng,
         map: this.map,
         title: "Hello World!"
-      });
+      });*/
+      
+       //Affichage des marqueurs
+        let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
+        let coord: Array<google.maps.LatLng> =[];
+        coord[0] = latLng1;
+        coord[1] = latLng2;
+        
+        this.ajouterMarqueurs(coord);
 
 
     }, (err) => {
@@ -47,6 +72,13 @@ export class MapPage {
     });
 
   }
+  
+  markerOnClick() {
+    console.log("marqueur");
+  }
 
 }
+
+  
+  
 
