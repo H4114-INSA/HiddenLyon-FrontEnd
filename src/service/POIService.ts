@@ -10,21 +10,29 @@ export class POIService {
 
   constructor(protected http:HttpClient) {
   }
+
   getPOI() {
     return this.http.get('/poi/allValid');
   }
+
   getNextPointToValidate(){
     //todo
      return this.http.get("todo");
   }
+
   voteOui(){
     //todo
   }
+
   voteNon(){
     //todo
   }
+
   report(params:string,rep:Report){
     return this.http.post(params, rep).toPromise();
   }
 
+  getImagePOI(){
+
+  }
 }
