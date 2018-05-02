@@ -117,12 +117,12 @@ export class MapPage {
                 });
         } 
         else {
-            this.poiService.getPOICategorie(this.globals.userExtended.token, this.categoriesC).then(data => {
+            /*this.poiService.getPOICategorie(this.globals.userExtended.token, this.categoriesC).then(data => {
             this.points = data;
             this.traitementPoints();
 
             }).catch(err => {
-                });
+                });*/
         
         }
     }
