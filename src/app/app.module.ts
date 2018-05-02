@@ -19,7 +19,7 @@ import {PageStat} from "../pages/profil/PageStat";
 import {PageProf} from "../pages/profil/PageProf";
 import {PagePOI} from "../pages/profil/PagePOI";
 
-//import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import  {AppRoutingModule} from "./app.routingModule";
@@ -71,7 +71,7 @@ import {AuthGuardService} from "../service/AuthGardService";
     Globals,
     StatusBar,
     SplashScreen,
-   // Geolocation,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
