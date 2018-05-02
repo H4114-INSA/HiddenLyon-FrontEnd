@@ -82,20 +82,14 @@ export class MapPage {
 
   }
   
-  /*traitementPoints() {
-    for(i=0;i<this.points.length;i++) {
-            let coord: Array<google.maps.LatLng> =[];
+  traitementPoints() {
+    for(i=0;i<this.points.length;i++){
+            let coords: Array<google.maps.LatLng> =[];
             let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
-            position: coords[i],
-            map: this.map,
-            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-            });
-            google.maps.event.addDomListener(marker, 'click', function() {
-                console.log("marqueur");
-                
-            });
+            coords[i] = latLng;
         }
-  }*/
+        this.ajouterMarqueurs(coords);
+        }
   
   markerOnClick() {
     console.log("marqueur");
