@@ -4,7 +4,6 @@ import{AuthGuardService} from "../service/AuthGardService";
 
 
 import { LoginPage } from "../pages/login/login";
-import { HomePage } from "../pages/home/home";
 import { MapPage } from "../pages/map/map";
 import {ProfilPage} from "../pages/profil/profil";
 import {RegisterPage} from "../pages/register/register";
@@ -19,8 +18,7 @@ import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 
 const appRoutes: Routes = [
   { path: 'page-login', component:LoginPage },
-  {path:'page-home',component:HomePage,canActivate: [AuthGuardService]},
-  {path:'page-map',component:MapPage},
+  {path:'page-map',component:MapPage, canActivate: [AuthGuardService]},
   {path:'page-profil',component:ProfilPage},
   {path:'page-register',component:RegisterPage},
   {path:'page-addPoint',component:AddPointPage},
