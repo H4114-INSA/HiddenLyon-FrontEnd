@@ -28,7 +28,7 @@ export class POIService {
     //todo
   }
   reportBack(params:string,rep:Report){
-    return this.http.post(params, rep).toPromise();
+    return this.http.post(params, rep).subscribe();
   }
 
 }
