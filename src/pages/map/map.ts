@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
+import {POIService} from "../../service/POIService";
+import {PointOfInterest} from "../../model/PointOfInterest.model";
 
 declare var google;
 
@@ -11,9 +13,11 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  points:Array<PointOfInterest>;
+  poiService:POIService;
 
-  constructor(public geolocation: Geolocation) {
-
+  constructor(public geolocation: Geolocation, serv: POIService) {
+    this.poiService=serv;
   }
 
   public ngAfterViewInit()
@@ -57,14 +61,19 @@ export class MapPage {
         title: "Hello World!"
       });*/
       
-       //Affichage des marqueurs
+       /*//Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
         let coord: Array<google.maps.LatLng> =[];
         coord[0] = latLng1;
         coord[1] = latLng2;
         
-        this.ajouterMarqueurs(coord);
+        this.ajouterMarqueurs(coord);*/
+        
+        this.poiService.getPOI().then(data => {
+        this.points = data;
+        }).catch(err =>{
+        });
 
 
     }, (err) => {
