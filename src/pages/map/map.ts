@@ -33,7 +33,7 @@ export class MapPage {
 
   ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
         var i:number;
-        
+
         for(i=0;i<coords.length;i++) {
             var marker = new google.maps.Marker({
             position: coords[i],
@@ -60,7 +60,7 @@ export class MapPage {
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      
+
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
@@ -73,7 +73,7 @@ export class MapPage {
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
         this.points = data;
         this.traitementPoints();
-        
+
         }).catch(err =>{
         });
     }, (err) => {
@@ -92,30 +92,30 @@ export class MapPage {
         this.ajouterMarqueurs(coords);
     }
 
-    
+
     clearMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
           this.markers[i].setMap(null);
         }
         this.markers =[];
       }
-      
+
     setMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
           this.markers[i].setMap(this.map);
         }
       }
-      
+
     filtrerCategorie() {
         this.clearMarkers();
         if(this.categoriesC.length==0) {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
             this.traitementPoints();
-        
+
             }).catch(err =>{
                 });
-        } 
+        }
         else {
             /*this.poiService.getPOICategorie(this.globals.userExtended.token, this.categoriesC).then(data => {
             this.points = data;
@@ -123,7 +123,7 @@ export class MapPage {
 
             }).catch(err => {
                 });*/
-        
+
         }
     }
     

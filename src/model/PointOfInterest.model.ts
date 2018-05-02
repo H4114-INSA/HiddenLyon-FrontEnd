@@ -5,15 +5,15 @@ export class PointOfInterest {
   IdPoint: number;
   title: string;
   description:string;
-  picture: ByteString;
+  picture: any;
   createDate:Date;
   status:Status;
   owner:User;
-  categories:Array<Category>
+  categories:Array<Category>;
   longitude:number;
   latitude:number;
 
-  constructor(title:string, description: string, picture: ByteString, user: User, listCategory: Array<Category>,lon:number,lat:number){
+  constructor(title:string, description: string, picture: any, user: User, listCategory: Array<Category>,lon:number,lat:number){
     this.title=title;
     this.description=description;
     this.picture=picture;
