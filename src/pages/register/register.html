@@ -7,12 +7,13 @@
 <ion-content padding >
 
   <form id="form" method="post" action="reception.php" enctype="multipart/form-data">
-    <ion-item>
 
-      <img id="avatar" src="">
+    <ion-item  margin-bottom="20px">
+      <img id="avatar"  src="">
       <p id="url" hidden></p>
       <input type="file" id="img" (change)="getImage()">
     </ion-item>
+
     <ion-item>
       <ion-input placeholder={{global?.langue.prenom}}  [(ngModel)]="fname" type="text" name="fname"></ion-input>
     </ion-item>
@@ -25,6 +26,7 @@
     <ion-item>
       <ion-input placeholder={{global?.langue.email}} [(ngModel)]="mail" type="text" name="mailUser" ></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-textarea placeholder={{global?.langue.biography}} [(ngModel)]="bio" type="text" name="bio" ></ion-textarea>
     </ion-item>
@@ -32,11 +34,14 @@
     <ion-item>
       <ion-input placeholder={{global?.langue.password}} [(ngModel)]="password" type="password" name="password"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-input placeholder={{global?.langue.confirmPassword}} [(ngModel)]="confPassword" type="password" name="confPassword"></ion-input>
     </ion-item>
   </form >
-  <button ion-button type="button" class="bottom_button"  method="GET" (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
-  <button ion-button class="bottom_button" routerLink="/page-login">{{global?.langue.cancel}}</button>
+
+  <p> todo : cas d'erreur si pb dans l'inscription (change the variable "exists" once the back method using the mail is done)</p>
+  <button ion-button type="button" float-right class="bottom_button"  method="GET" (click)="register()" routerLink="/page-login" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
+  <button ion-button type="button" float-left  class="bottom_button"  color="light" id="cancelbtn"  routerLink="/page-login" >{{global?.langue.cancel}}</button>
 
 </ion-content>

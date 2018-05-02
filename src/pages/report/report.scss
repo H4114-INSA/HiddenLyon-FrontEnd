@@ -1,10 +1,16 @@
 page-report {
 
-  .bottom_button, input {
-    width: 100%;
-    margin-bottom: 4%
+  .bottom_button {
+    margin-top: 10%;
+    width: 100px;
+    bottom: 20px;
+    margin-top: 70%;
   }
-  #form{
-    margin-bottom: 5%;
+
+  #cancelbtn{
+    border-color:grey;
+    background-color: ghostwhite;
+    border: 0.5px solid #808080;
   }
+
 }
