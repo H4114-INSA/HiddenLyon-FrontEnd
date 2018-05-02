@@ -19,7 +19,7 @@ export class PageStat {
   this.getUserNumberValPoints();
   }
   getUserNumberSubPoints(){
-    var url:string="/poi/getNumberUserPoi?="+this.global.userExtended.email;
+    var url:string="http://localhost:8080/poi/getNumberUserPoi?mailUser="+this.global.userExtended.email;
     this.poiService.getNumberSubPoint(url,this.global.userExtended.token).then(data => {
       this.pointsSoumis = data;
     }).catch(err =>{
@@ -27,7 +27,7 @@ export class PageStat {
   }
 
   getUserNumberValPoints(){
-    var url:string="/poi/getNumberValidatedUserPoi?="+this.global.userExtended.email;
+    var url:string="http://localhost:8080/poi/getNumberValidatedUserPoi?mailUser="+this.global.userExtended.email;
     this.poiService.getNumberValPoint(url,this.global.userExtended.token).then(data => {
       this.pointsAcceptes = data;
     }).catch(err =>{

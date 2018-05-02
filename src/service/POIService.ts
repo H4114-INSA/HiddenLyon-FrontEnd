@@ -8,6 +8,7 @@ import {UserExtended} from "../model/userExtended.model";
 import 'rxjs/Rx'
 import {TemporaryPointOfInterest} from "../model/TemporaryPointOfInterest.model";
 import {User} from "../model/user.model";
+import {Category} from "../model/Category.model";
 
 @Injectable()
 export class POIService {
@@ -30,11 +31,13 @@ export class POIService {
         return data as Array<PointOfInterest>;
       });
   }
-  addPoint(params:string,poi:PointOfInterest){
-    this.http.post(params, poi).subscribe();
+
+  addPoint(params:string,poi:PointOfInterest, token : string){
+    this.http.post(params, poi, {headers: new HttpHeaders({Authorization : 'Basic '+token})}).toPromise();
   }
-  addPointTempo(params:string,poi:TemporaryPointOfInterest){
-    this.http.post(params, poi).subscribe();
+
+  addPointTempo(params:string,poi:TemporaryPointOfInterest, token: string){
+    this.http.post(params, poi, {headers: new HttpHeaders({Authorization : 'Basic '+token})}).toPromise();
   }
 
   getNumberSubPoint(params:string,token:string):Promise<number>{
@@ -74,4 +77,11 @@ export class POIService {
     return this.http.post(params, rep).subscribe();
   }
 
+  getAllCategory(token: string) : Promise<Array<Category>>{
+    return this.http.get("http://localhost:8080/category/all", {headers: new HttpHeaders({Authorization: 'Basic ' + token})})
+      .toPromise()
+      .then(data => {
+        return data as Array<Category>;
+      });
+  }
 }

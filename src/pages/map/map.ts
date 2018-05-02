@@ -53,6 +53,8 @@ export class MapPage {
     this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      this.globals.photoTakenLat=position.coords.latitude;
+      this.globals.photoTakenLon=position.coords.longitude;
       let mapOptions = {
         center: latLng,
         zoom: 15,
@@ -126,14 +128,14 @@ export class MapPage {
 
         }
     }
-    
+
     filtrerRequete(q:string) {
         this.clearMarkers();
         if(q.length>0){
             /*this.poiService.getPOIRequete(this.globals.userExtended.token, q).then(data => {
             this.points=data;
             this.traitementPoints();
-            
+
             }).catch(err => {
                 });*/
         }
@@ -141,7 +143,7 @@ export class MapPage {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
             this.traitementPoints();
-        
+
             }).catch(err =>{
                 });
         }
