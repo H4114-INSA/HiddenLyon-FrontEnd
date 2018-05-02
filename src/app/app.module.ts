@@ -13,6 +13,7 @@ import { ReportPage} from "../pages/report/report";
 import { ParcoursPage} from "../pages/parcours/parcours";
 import {AddPointPage} from "../pages/addPoint/addPoint";
 import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+import {InfosPointPage} from "../pages/infosPoint/infosPoint";
 
 import { ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";

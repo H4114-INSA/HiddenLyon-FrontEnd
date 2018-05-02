@@ -16,6 +16,7 @@ import {ConditionsPage} from "../pages/conditions/conditions";
 
 import  {AddPointPage} from "../pages/addPoint/addPoint";
 import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+import {InfosPointPage} from "../pages/infosPoint/infosPoint";
 
 const appRoutes: Routes = [
   { path: 'page-login', component:LoginPage },

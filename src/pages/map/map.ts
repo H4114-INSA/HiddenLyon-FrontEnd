@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
-import { ToastController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 
 declare var google;
 
@@ -13,7 +13,7 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public geolocation: Geolocation, private toastCtrl: ToastController) {
+  constructor(public geolocation: Geolocation, public modalCtrl: ModalController) {
 
   }
 
@@ -69,19 +69,10 @@ export class MapPage {
   markerOnClick() {
     console.log("marqueur");
   }
-
-
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'User was added successfully',
-      position: 'bottom'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
+  
+  openModal(){
+   const myModal =  this.modalCtrl.create('InfosPointPage');
+   myModal.present();
   }
 
 }
