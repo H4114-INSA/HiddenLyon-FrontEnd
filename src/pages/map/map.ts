@@ -148,6 +148,15 @@ export class MapPage {
                 });
         }
     }
+    
+    cancel() {
+        this.poiService.getPOI(this.globals.userExtended.token).then(data => {
+            this.points = data;
+            this.traitementPoints();
+        
+            }).catch(err =>{
+                });
+    }
 
 }
 
