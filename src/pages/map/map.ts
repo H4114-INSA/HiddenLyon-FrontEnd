@@ -19,9 +19,8 @@ export class MapPage {
   poiService:POIService;
   globals: Globals;
 
-  constructor(public geolocation: Geolocation, public modalCtrl: ModalController) {
 
-  constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
+  constructor(public geolocation: Geolocation, serv: POIService, g: Globals,public modalCtrl: ModalController) {
     this.poiService=serv;
     this.globals=g;
   }
@@ -34,17 +33,18 @@ export class MapPage {
 
   ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
         var i:number;
-
+        var modalCtrl = this.modalCtrl;
         for(i=0;i<coords.length;i++) {
             var marker = new google.maps.Marker({
             position: coords[i],
             map: this.map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
-            google.maps.event.addDomListener(marker, 'click', function() {
-                console.log("marqueur");
+          marker.addListener('click', function() {
+            const myModal =  modalCtrl.create('InfosPointPage');
+            myModal.present();
+          });
 
-            });
         }
    }
 
@@ -88,7 +88,7 @@ export class MapPage {
 
   }
 
-  traitementPoints() {
+  traitementPoints(){
     let coords: Array<google.maps.LatLng> =[];
     for(var i=0;i<this.points.length;i++){
 
@@ -96,16 +96,9 @@ export class MapPage {
             coords[i] = latLng;
         }
         this.ajouterMarqueurs(coords);
-        }
-
-  markerOnClick() {
-    console.log("marqueur");
   }
 
-  openModal(){
-   const myModal =  this.modalCtrl.create('InfosPointPage');
-   myModal.present();
-  }
+
 
 }
 
