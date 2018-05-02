@@ -19,8 +19,7 @@ import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 
 const appRoutes: Routes = [
   { path: 'page-login', component:LoginPage },
-  {path:'page-home',component:HomePage,canActivate: [AuthGuardService]},
-  {path:'page-map',component:MapPage},
+  {path:'page-map',component:MapPage,canActivate: [AuthGuardService]},
   {path:'page-profil',component:ProfilPage},
   {path:'page-register',component:RegisterPage},
   {path:'page-addPoint',component:AddPointPage},

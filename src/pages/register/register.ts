@@ -4,7 +4,7 @@ import {User} from "../../model/user.model";
 import { Globals} from "../../globalVariable/globals";
 import {UserExtended} from "../../model/userExtended.model";
 
-import * as bcrypt from "bcryptjs";
+//import * as bcrypt from "bcryptjs";
 
 
 @Component({
@@ -33,9 +33,9 @@ export class RegisterPage {
     if(this.password==this.confPassword){
       this.img = (<HTMLParagraphElement>document.getElementById("url")).innerHTML;
       console.log(this.img);
-      var hash = bcrypt.hashSync(this.password, 10);
+     // var hash = bcrypt.hashSync(this.password, 10);
 
-      let user=new User(this.fname,this.lname,this.mail,hash,this.bio,this.img);
+      let user=new User(this.fname,this.lname,this.mail,this.password,this.bio,this.img);
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);

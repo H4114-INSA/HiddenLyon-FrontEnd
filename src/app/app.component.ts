@@ -7,10 +7,10 @@ import { MapPage } from '../pages/map/map';
 import { LoginPage } from '../pages/login/login';
 import {ProfilPage} from "../pages/profil/profil";
 import {ValiderPointPage} from "../pages/validerPoint/validerPoint";
-import{ReportPage} from "../pages/report/report";
-import { ParcoursPage} from "../pages/parcours/parcours";
-import  {ParametresPage} from "../pages/parametres/parametres";
-import {Globals} from "../globalVariable/globals";
+import{ReportPage } from "../pages/report/report";
+import { ParcoursPage } from "../pages/parcours/parcours";
+import  { ParametresPage } from "../pages/parametres/parametres";
+import { Globals } from "../globalVariable/globals";
 
 
 @Component({
