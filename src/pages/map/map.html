@@ -14,7 +14,7 @@
     <ion-icon name="add"></ion-icon>
   </button>
   <div id="layout">
-    <ion-searchbar #q id="searchbar" (keyup.enter)="filtrerRequete(q.value)"></ion-searchbar>
+    <ion-searchbar #q id="searchbar" (keyup.enter)="filtrerRequete(q.value)" (ionClear)="cancel()"></ion-searchbar>
 
   <ion-list id="list">
     <ion-item>
