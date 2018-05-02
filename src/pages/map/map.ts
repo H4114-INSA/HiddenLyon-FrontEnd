@@ -126,6 +126,26 @@ export class MapPage {
         
         }
     }
+    
+    filtrerRequete(q:string) {
+        this.clearMarkers();
+        if(q.length>0){
+            /*this.poiService.getPOIRequete(this.globals.userExtended.token, q).then(data => {
+            this.points=data;
+            this.traitementPoints();
+            
+            }).catch(err => {
+                });*/
+        }
+        else {
+            this.poiService.getPOI(this.globals.userExtended.token).then(data => {
+            this.points = data;
+            this.traitementPoints();
+        
+            }).catch(err =>{
+                });
+        }
+    }
 
 }
 
