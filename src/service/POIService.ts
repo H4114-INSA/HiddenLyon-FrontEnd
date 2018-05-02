@@ -40,6 +40,15 @@ export class POIService {
     //todo
      return this.http.get("todo");
   }
+
+  getPointToValidate(token: string,  user: User) : Promise<PointOfInterest> { //pour vérifier s'il reste un point à valider ou non
+    return this.http.get('http://localhost:8080/poi/getPointToValidate?id='+user.IdUser, {headers: new HttpHeaders({Authorization : 'Basic '+token})})
+      .toPromise()
+      .then ( data =>  {
+      return data as PointOfInterest;
+    });
+  }
+
   voteOui(){
     //todo
   }
@@ -48,11 +57,6 @@ export class POIService {
   }
   reportBack(params:string,rep:Report){
     return this.http.post(params, rep).subscribe();
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred during the authentication, please check your email/password'); // for demo purposes only
-    return Promise.reject(error.message || error);
   }
 
 }
