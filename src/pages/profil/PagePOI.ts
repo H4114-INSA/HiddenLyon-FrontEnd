@@ -4,7 +4,7 @@ import {POIService} from "../../service/POIService";
 
 @Component({
   selector: 'pagePOI',
-  templateUrl: 'pagePOI.html',
+  templateUrl: 'PagePOI.html',
 })
 
 export class PagePOI {

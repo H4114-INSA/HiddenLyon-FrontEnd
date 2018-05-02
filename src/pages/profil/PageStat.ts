@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: 'PageStat',
-  templateUrl: 'pageStat.html',
+  templateUrl: 'PageStat.html',
 })
 
 export class PageStat {}

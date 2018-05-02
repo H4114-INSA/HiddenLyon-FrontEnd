@@ -7,22 +7,28 @@
 
   <ion-content>
     <ion-list>
-      < <button menuClose ion-item routerLink="/page-map">
+       <button menuClose ion-item routerLink="/page-map">
+        <ion-icon class="icones" name="navigate"></ion-icon>
       {{global.langue.map}}
     </button>
-      < <button menuClose ion-item routerLink="/page-profil">
+      <button menuClose ion-item routerLink="/page-profil">
+      <ion-icon class="icones" name="contact"></ion-icon>
       {{global.langue.profil}}
     </button>
-      < <button menuClose ion-item routerLink="/page-validerPoint">
+      <button menuClose ion-item routerLink="/page-validerPoint">
+    <ion-icon class="icones" name="checkmark-circle"></ion-icon>
       {{global.langue.validerPoint}}
     </button>
-      < <button menuClose ion-item routerLink="/page-parcours">
+      <button menuClose ion-item routerLink="/page-parcours">
+    <ion-icon class="icones" name="walk"></ion-icon>
       {{global.langue.parcours}}
     </button>
-      < <button menuClose ion-item routerLink="/page-report">
+      <button menuClose ion-item routerLink="/page-report">
+    <ion-icon class="icones" name="warning"></ion-icon>
       {{global.langue.report}}
     </button>
-      < <button menuClose ion-item routerLink="/page-parametres">
+      <button menuClose ion-item routerLink="/page-parametres">
+    <ion-icon class="icones" name="settings"></ion-icon>
       {{global.langue.parametres}}
     </button>
     </ion-list>
@@ -35,3 +41,4 @@
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 <router-outlet></router-outlet>
+
