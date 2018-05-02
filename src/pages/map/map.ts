@@ -61,14 +61,14 @@ export class MapPage {
         title: "Hello World!"
       });*/
       
-       /*//Affichage des marqueurs
+       //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
         let coord: Array<google.maps.LatLng> =[];
         coord[0] = latLng1;
         coord[1] = latLng2;
         
-        this.ajouterMarqueurs(coord);*/
+        this.ajouterMarqueurs(coord);
         
         this.poiService.getPOI().then(data => {
         this.points = data;
@@ -81,6 +81,21 @@ export class MapPage {
     });
 
   }
+  
+  /*traitementPoints() {
+    for(i=0;i<this.points.length;i++) {
+            let coord: Array<google.maps.LatLng> =[];
+            let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
+            position: coords[i],
+            map: this.map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            });
+            google.maps.event.addDomListener(marker, 'click', function() {
+                console.log("marqueur");
+                
+            });
+        }
+  }*/
   
   markerOnClick() {
     console.log("marqueur");
