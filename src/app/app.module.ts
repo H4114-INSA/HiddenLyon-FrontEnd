@@ -17,7 +17,6 @@ import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
 import { ParametresPage} from "../pages/parametres/parametres";
 import {ConditionsPage} from "../pages/conditions/conditions";
 
-
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';

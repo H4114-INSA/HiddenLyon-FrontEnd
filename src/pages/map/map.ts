@@ -23,6 +23,22 @@ export class MapPage {
 
   }
 
+  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
+        var i:number;
+
+        for(i=0;i<coords.length;i++) {
+            var marker = new google.maps.Marker({
+            position: coords[i],
+            map: this.map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            });
+            google.maps.event.addDomListener(marker, 'click', function() {
+                console.log("marqueur");
+
+            });
+        }
+   }
+
   loadMap(){
 
     this.geolocation.getCurrentPosition().then((position) => {
@@ -48,6 +64,10 @@ export class MapPage {
       console.log(err);
     });
 
+  }
+
+  markerOnClick() {
+    console.log("marqueur");
   }
 
 
