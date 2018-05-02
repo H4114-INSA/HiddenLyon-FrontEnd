@@ -8,16 +8,23 @@
   </ion-navbar>
 </ion-header>
 
-<p> coucou 3 </p>
-
 <ion-content>
 
   <ion-list>
     <ion-list-header>
       Mes points d'intérêt
     </ion-list-header>
-    <ion-item>point  <p> 100</p> </ion-item>
-    <ion-item>point2 <p> 4.2/5</p> </ion-item>
+    <ion-list *ngFor="let point of poiArray">
+      <ion-item>
+      <img src={{point?.picture}}>
+      </ion-item>
+      <ion-item>
+      <ion-label>{{point.title}}</ion-label>
+      </ion-item>
+      <ion-item>
+      <ion-textarea placeholder={{point.description}} disabled></ion-textarea>
+      </ion-item>
+    </ion-list>
   </ion-list>
 
 </ion-content>
