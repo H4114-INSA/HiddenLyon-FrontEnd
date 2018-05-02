@@ -37,9 +37,4 @@ export class POIService {
     return this.http.post(params, rep).subscribe();
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred during the authentication, please check your email/password'); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
-
 }
