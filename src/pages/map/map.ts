@@ -23,6 +23,7 @@ export class MapPage {
   constructor(public geolocation: Geolocation, serv: POIService, g: Globals,public modalCtrl: ModalController) {
     this.poiService=serv;
     this.globals=g;
+
   }
 
   public ngAfterViewInit()
@@ -31,21 +32,30 @@ export class MapPage {
 
   }
 
-  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
-        var i:number;
-        var modalCtrl = this.modalCtrl;
-        for(i=0;i<coords.length;i++) {
-            var marker = new google.maps.Marker({
-            position: coords[i],
-            map: this.map,
-            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-            });
-          marker.addListener('click', function() {
-            const myModal =  modalCtrl.create('InfosPointPage');
-            myModal.present();
-          });
+  ajouterMarqueurs(): void {
+    var modalCtrl = this.modalCtrl;
+    var i:number;
 
-        }
+
+    for(i=0;i<this.points.length;i++) {
+        let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
+        var marker = new google.maps.Marker({
+        position:latLng,
+        map: this.map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        });
+        var title = 'GROS PD';
+     //   var description = this.points[i].description;
+      //  var picture = this.points[i].picture;
+      //  var categories = this.points[i].categories;
+
+
+        marker.addListener('click', function() {
+        const myModal =  modalCtrl.create('InfosPointPage', { title: title });
+        myModal.present();
+      });
+
+    }
    }
 
   loadMap(){
@@ -75,30 +85,41 @@ export class MapPage {
         coord[0] = latLng1;
         coord[1] = latLng2;
 
-        this.ajouterMarqueurs(coord);
+        var PoI= new PointOfInterest('Title','Ceci est une description complète du point d\'interet', '../../assets/imgs/bb.jpg',
+          null, null, position.coords.latitude-0.01,position.coords.longitude-0.01);
+        this.marquerPositionGeo(coord);
+
+//        console.log(this.points.length);
+
 
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
-        this.points = data;
-        this.traitementPoints();
-        }).catch(err =>{
-        });
-    }, (err) => {
-      console.log(err);
+            this.points = data;
+            this.ajouterMarqueurs();
+            }).catch(err =>{
+            });
+        }, (err) => {
+          console.log(err);
     });
 
   }
 
-  traitementPoints(){
-    let coords: Array<google.maps.LatLng> =[];
-    for(var i=0;i<this.points.length;i++){
 
-            let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
-            coords[i] = latLng;
-        }
-        this.ajouterMarqueurs(coords);
+  marquerPositionGeo(coords: Array<google.maps.LatLng>) :void {
+    var i:number;
+    var modalCtrl = this.modalCtrl;
+    for(i=0;i<coords.length;i++) {
+      var marker = new google.maps.Marker({
+        position: coords[i],
+        map: this.map,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+      });
+      marker.addListener('click', function() {
+        const myModal =  modalCtrl.create('InfosPointPage');
+        myModal.present();
+      });
+
+    }
   }
-
-
 
 }
 
