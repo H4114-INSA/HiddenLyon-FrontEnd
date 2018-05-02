@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
 import {POIService} from "../../service/POIService";
 import {PointOfInterest} from "../../model/PointOfInterest.model";
+import {Globals} from "../../globalVariable/globals";
 
 declare var google;
 
@@ -15,9 +16,11 @@ export class MapPage {
   map: any;
   points:Array<PointOfInterest>;
   poiService:POIService;
+  globals: Globals;
 
-  constructor(public geolocation: Geolocation, serv: POIService) {
+  constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
     this.poiService=serv;
+    this.globals=g;
   }
 
   public ngAfterViewInit()
@@ -25,10 +28,10 @@ export class MapPage {
     this.loadMap();
 
   }
-  
+
   ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
         var i:number;
-        
+
         for(i=0;i<coords.length;i++) {
             var marker = new google.maps.Marker({
             position: coords[i],
@@ -37,7 +40,7 @@ export class MapPage {
             });
             google.maps.event.addDomListener(marker, 'click', function() {
                 console.log("marqueur");
-                
+
             });
         }
    }
@@ -60,44 +63,43 @@ export class MapPage {
         map: this.map,
         title: "Hello World!"
       });*/
-      
+
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
         let coord: Array<google.maps.LatLng> =[];
         coord[0] = latLng1;
         coord[1] = latLng2;
-        
+
         this.ajouterMarqueurs(coord);
-        
-        this.poiService.getPOI().then(data => {
+
+        this.poiService.getPOI(this.globals.userExtended.token).then(data => {
         this.points = data;
+        this.traitementPoints();
         }).catch(err =>{
         });
-
-
     }, (err) => {
       console.log(err);
     });
 
   }
-  
+
   traitementPoints() {
     let coords: Array<google.maps.LatLng> =[];
-    for(i=0;i<this.points.length;i++){
-            
+    for(var i=0;i<this.points.length;i++){
+
             let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
             coords[i] = latLng;
         }
         this.ajouterMarqueurs(coords);
         }
-  
+
   markerOnClick() {
     console.log("marqueur");
   }
 
 }
 
-  
-  
+
+
 

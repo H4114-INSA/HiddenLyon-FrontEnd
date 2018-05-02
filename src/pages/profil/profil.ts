@@ -39,6 +39,7 @@ export class ProfilPage {
     this.path=this.user.profilePicture;
     this.modif=false;
   }
+
   cancel(){
     this.description=this.user.biography;
     this.prenom=this.user.firstName;
@@ -50,6 +51,7 @@ export class ProfilPage {
     this.pass3=null;
     this.modif=!this.modif;
   }
+
   modifierBack(){
     this.user.firstName=this.prenom;
     this.user.lastName=this.nom;
@@ -78,6 +80,7 @@ export class ProfilPage {
     this.globals.userExtended=new UserExtended(this.user.firstName,this.user.lastName,this.user.email,this.user.hashPassword,this.user.biography,this.user.profilePicture,this.globals.userExtended.token);
     this.modif=!this.modif;
   }
+
   modifier(){
     this.modif=!this.modif;
   }

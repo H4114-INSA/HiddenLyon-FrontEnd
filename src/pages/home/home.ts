@@ -19,11 +19,11 @@ export class HomePage {
     this.global = g;
   }
 
-  getPOI(){
+  /*getPOI(){
     //console.log(this.global.userExtended.token);
     this.poiService.getPOI()
-      .subscribe(data => this.pointVector);
-  }
+      .then(data => this.pointVector);
+  }*/
 
   }
 
