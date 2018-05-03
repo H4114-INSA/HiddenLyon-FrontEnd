@@ -1,9 +1,12 @@
 page-addPoint {
 
-  #bouton {
-    width: 20%;
-    align-self: center;
 
+  .btn {
+    z-index: 1;
+    position: absolute;
+    bottom: 20px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
   }
-
 }
