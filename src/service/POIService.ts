@@ -73,8 +73,8 @@ export class POIService {
       .subscribe();
   }
 
-  reportBack(params:string,rep:Report){
-    return this.http.post(params, rep).subscribe();
+  reportBack(params:string,rep:Report,token :string){
+    this.http.post(params, rep, {headers: new HttpHeaders({Authorization : 'Basic '+token})}).toPromise();
   }
 
   getAllCategory(token: string) : Promise<Array<Category>>{
