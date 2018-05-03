@@ -58,12 +58,9 @@ export class MapPage {
         marker.addListener('click', function() {
           myModal.present();
         });
-
+        this.markers.push(marker);
     }
-            });
-            this.markers.push(marker);
-        }
-   }
+  }
 
   loadMap(){
 
@@ -83,10 +80,8 @@ export class MapPage {
 
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
         let coord: Array<google.maps.LatLng> =[];
         coord[0] = latLng1;
-        coord[1] = latLng2;
 
         this.marquerPositionGeo(coord);
 
@@ -102,18 +97,12 @@ export class MapPage {
   }
   marquerPositionGeo(coords: Array<google.maps.LatLng>) :void {
     var i:number;
-    var modalCtrl = this.modalCtrl;
     for(i=0;i<coords.length;i++) {
       var marker = new google.maps.Marker({
         position: coords[i],
         map: this.map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        icon: 'http://maps.google.com/mapfiles/ms/micons/red.png'
       });
-      marker.addListener('click', function() {
-        const myModal =  modalCtrl.create('InfosPointPage');
-        myModal.present();
-      });
-
     }
   }
 
@@ -135,7 +124,7 @@ export class MapPage {
         if(this.categoriesC.length==0) {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
@@ -164,7 +153,7 @@ export class MapPage {
         else {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
@@ -174,12 +163,11 @@ export class MapPage {
     cancel() {
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
     }
-
 }
 
 
