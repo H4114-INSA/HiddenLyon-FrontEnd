@@ -23,12 +23,7 @@
     <ion-item>
       <ion-label> <ion-icon name="pricetag"></ion-icon></ion-label>
       <ion-select id="select" multiple="true" cancelText="Annuler" okText="Valider" (ionChange)="filtrerCategorie()" [(ngModel)]="categoriesC">
-        <ion-option  value="nature">Nature</ion-option>
-        <ion-option  value="monuments">Monuments</ion-option>
-        <ion-option  value="streetArt">Street Art</ion-option>
-        <ion-option  value="oeuvres">Oeuvres d'Art</ion-option>
-        <ion-option  value="pointsDeVue">Points de Vue</ion-option>
-        <ion-option  value="soir">A voir le soir</ion-option>
+          <ion-option *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

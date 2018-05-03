@@ -8,34 +8,36 @@
 </ion-header>
 
 <ion-content padding>
-  <img  src={{globals?.photoTaken}}>
+  <img class="pict" src={{globals?.photoTaken}}>
 
   <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
     <ion-icon ios="ios-undo" md="md-undo"></ion-icon>
   </button>
 
   <form>
-    <ion-item>
-      <ion-input placeholder="Titre*"  [(ngModel)]="titre" type="text" name="title"></ion-input>
+    <ion-item class="font">
+      <ion-input class="font" placeholder="Titre*"  [(ngModel)]="titre" type="text" name="title"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Point temporaire?</ion-label>
-      <ion-checkbox [(ngModel)]="tempo" name="tempo" item-end></ion-checkbox>
+    <ion-item class="font" >
+      <ion-label class="font" >Point temporaire?</ion-label>
+      <ion-checkbox  [(ngModel)]="tempo" name="tempo" item-end></ion-checkbox>
     </ion-item>
-    <ion-item *ngIf="tempo">
-      <ion-label>fin de validité:</ion-label>
-      <ion-input [(ngModel)]="date" type="date" name="date" item-end></ion-input>
+    <ion-item class="font" *ngIf="tempo">
+      <ion-label class="font" >fin de validité:</ion-label>
+      <ion-input class="font"[(ngModel)]="date" type="date" name="date" item-end></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Catégorie(s):</ion-label>
-      <ion-select [(ngModel)]="catSelect" name="categorie" multiple="true">
-        <ion-option *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
+    <ion-item class="font" >
+      <ion-label class="font">Catégorie(s):</ion-label>
+      <ion-select class="font"[(ngModel)]="catSelect" name="categorie" multiple="true">
+        <ion-option class="font" *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-textarea placeholder="Description" [(ngModel)]="descr" type="text" name="descr" ></ion-textarea>
+    <ion-item class="font" >
+      <ion-textarea class="font" rows="5" placeholder="Description" [(ngModel)]="descr" type="text" name="descr" ></ion-textarea>
     </ion-item>
 </form>
-  <button ion-button routerLink="/page-map">Cancel</button>
-  <button ion-button type="button" (click)="addPoint()" [disabled]="!catSelect || !titre ">Valider</button>
+
+  <button ion-button type="button" float-right class="bottom_button" (click)="addPoint()" [disabled]="!catSelect || !titre ">Valider</button>
+  <button ion-button type="button" float-left  class="bottom_button"  color="light" id="cancelbtn"  routerLink="/page-map" >Annuler</button>
+
 </ion-content>

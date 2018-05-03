@@ -10,25 +10,25 @@
   <form id="form">
 
     <ion-item>
-      <ion-label>{{globals.langue.langue}}:</ion-label>
-      <ion-select [(ngModel)]="langue" name="categorie">
-        <ion-option value="fr">{{globals.langue.fr}}</ion-option>
-        <ion-option value="en">{{globals.langue.en}}</ion-option>
+      <ion-label class="my-label">{{globals.langue.langue}}:</ion-label>
+      <ion-select class="my-label" [(ngModel)]="langue" name="categorie">
+        <ion-option class="my-label" value="fr">{{globals.langue.fr}}</ion-option>
+        <ion-option class="my-label" value="en">{{globals.langue.en}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>{{globals.langue.patageData}}</ion-label>
+      <ion-label class="my-label">{{globals.langue.patageData}}</ion-label>
       <ion-checkbox [(ngModel)]="dataShare" name="share" item-end></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>{{globals.langue.geoloc}}</ion-label>
+      <ion-label class="my-label">{{globals.langue.geoloc}}</ion-label>
       <ion-checkbox [(ngModel)]="geoLoc" name="loc" item-end></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>{{globals.langue.notif}}</ion-label>
+      <ion-label class="my-label">{{globals.langue.notif}}</ion-label>
       <ion-checkbox [(ngModel)]="notif" name="notif" item-end></ion-checkbox>
     </ion-item>
-    <ion-item routerLink="/page-conditions">
+    <ion-item class="my-label" routerLink="/page-conditions">
       <ion-label>{{globals.langue.conditions}}</ion-label>
     </ion-item>
   </form >

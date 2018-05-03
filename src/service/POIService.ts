@@ -73,8 +73,8 @@ export class POIService {
       .subscribe();
   }
 
-  reportBack(params:string,rep:Report){
-    return this.http.post(params, rep).subscribe();
+  reportBack(params:string,rep:Report,token :string){
+    this.http.post(params, rep, {headers: new HttpHeaders({Authorization : 'Basic '+token})}).toPromise();
   }
 
   getAllCategory(token: string) : Promise<Array<Category>>{
@@ -83,6 +83,24 @@ export class POIService {
       .then(data => {
         return data as Array<Category>;
       });
+  }
+
+  getPOICategorie(token : string, categories : Array<String>){
+    var query : string="nameCategories=";
+    for(let c of categories){
+      query+=c.valueOf()+",";
+    }
+    query=query.slice(0,-1);
+    console.log(query);
+    return this.http.get("http://localhost:8080/poi/getFilterPoints?"+query, {headers: new HttpHeaders({Authorization: 'Basic ' + token})})
+      .toPromise()
+      .then(data => {
+        return data as Array<PointOfInterest>;
+      });
+  }
+
+  getPOIRequete(token: string, q: string){
+
   }
 
   private handleError(error: any): Promise<any> {

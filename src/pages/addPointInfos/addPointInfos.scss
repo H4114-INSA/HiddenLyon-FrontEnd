@@ -6,11 +6,22 @@ page-addPointInfos {
     float: right;
   }
 
-  img.photo{
-    width:50%;
+  .pict{
+    width:60%;
     height: auto;
   }
 
+  #cancelbtn{
+    border-color:grey;
+    background-color: ghostwhite;
+    border: 0.5px solid #808080;
+  }
 
+  .bottom_button {
+    margin-top: 10%;
+  }
 
+  .font{
+    font-size: 1.4rem;
+  }
 }

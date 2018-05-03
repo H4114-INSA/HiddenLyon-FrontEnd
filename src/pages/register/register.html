@@ -11,7 +11,7 @@
     <ion-item  margin-bottom="20px">
       <img id="avatar"  src="">
       <p id="url" hidden></p>
-      <input type="file" id="img" (change)="getImage()">
+      <input style="font-size:1.4rem;" type="file" id="img" (change)="getImage()">
     </ion-item>
 
     <ion-item>
@@ -40,7 +40,7 @@
     </ion-item>
   </form >
 
-  <p> todo : cas d'erreur si pb dans l'inscription (change the variable "exists" once the back method using the mail is done)</p>
+  <!-- todo : cas d'erreur si pb dans l'inscription (change the variable "exists" once the back method using the mail is done)-->
   <button ion-button type="button" float-right class="bottom_button"  method="GET" (click)="register()" routerLink="/page-login" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
   <button ion-button type="button" float-left  class="bottom_button"  color="light" id="cancelbtn"  routerLink="/page-login" >{{global?.langue.cancel}}</button>
 

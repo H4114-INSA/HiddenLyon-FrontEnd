@@ -1,8 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
+import { ModalController } from 'ionic-angular';
 import {POIService} from "../../service/POIService";
 import {PointOfInterest} from "../../model/PointOfInterest.model";
 import {Globals} from "../../globalVariable/globals";
+import {Category} from "../../model/Category.model";
 
 declare var google;
 
@@ -21,19 +23,22 @@ export class MapPage {
   globals: Globals;
   categoriesC: Array<string>;
   direction: google.maps.DirectionsRenderer;
+  cat:Array<Category>;
 
-  constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
+
+  constructor(public geolocation: Geolocation, serv: POIService, g: Globals,public modalCtrl: ModalController) {
     this.poiService=serv;
     this.globals=g;
     this.markers= new Array<google.maps.Marker>();
     this.parcours= new Array<google.maps.LatLng>();
+    this.getCategories();
   }
 
   public ngAfterViewInit()
   {
     this.loadMap();
   }
-
+  
   ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
         var i:number;
         var parcours = this.parcours;
@@ -88,6 +93,13 @@ export class MapPage {
             this.markers.push(marker);
         }
    }
+   
+  getCategories(){
+    this.poiService.getAllCategory(this.globals.userExtended.token)
+      .then(data=>{
+        this.cat=data;
+      });
+  }
 
   loadMap(){
 
@@ -99,6 +111,7 @@ export class MapPage {
       let mapOptions = {
         center: latLng,
         zoom: 15,
+        streetViewControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
       
@@ -109,30 +122,33 @@ export class MapPage {
             map   : this.map,
         });
 
-        this.poiService.getPOI(this.globals.userExtended.token).then(data => {
-        this.points = data;
-        this.traitementPoints();
-        
-        
+       //Affichage des marqueurs
+        let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        let coord: Array<google.maps.LatLng> =[];
+        coord[0] = latLng1;
 
-        }).catch(err =>{
-        });
-    }, (err) => {
-      console.log(err);
+        this.marquerPositionGeo(coord);
+
+        this.poiService.getPOI(this.globals.userExtended.token).then(data => {
+            this.points = data;
+            this.ajouterMarqueurs();
+            }).catch(err =>{
+            });
+        }, (err) => {
+          console.log(err);
     });
 
   }
-
-  traitementPoints() {
-    let coords: Array<google.maps.LatLng> =[];
-    for(var i=0;i<this.points.length;i++){
-
-            let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
-            coords[i] = latLng;
-        }
-        this.ajouterMarqueurs(coords);
+  marquerPositionGeo(coords: Array<google.maps.LatLng>) :void {
+    var i:number;
+    for(i=0;i<coords.length;i++) {
+      var marker = new google.maps.Marker({
+        position: coords[i],
+        map: this.map,
+        icon: 'http://maps.google.com/mapfiles/ms/micons/red.png'
+      });
     }
-
+  }
 
     clearMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
@@ -152,47 +168,47 @@ export class MapPage {
         if(this.categoriesC.length==0) {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
         }
         else {
-            /*this.poiService.getPOICategorie(this.globals.userExtended.token, this.categoriesC).then(data => {
+            this.poiService.getPOICategorie(this.globals.userExtended.token, this.categoriesC).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err => {
-                });*/
+                });
 
         }
     }
 
-    filtrerRequete(q:string) {
+   filtrerRequete(q:string) {
         this.clearMarkers();
         if(q.length>0){
-            /*this.poiService.getPOIRequete(this.globals.userExtended.token, q).then(data => {
+            this.poiService.getPOIRequete(this.globals.userExtended.token, q).then(data => {
             this.points=data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err => {
-                });*/
+                });
         }
         else {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
         }
     }
-    
+
     cancel() {
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
-        
+            this.ajouterMarqueurs();
+
             }).catch(err =>{
                 });
     }

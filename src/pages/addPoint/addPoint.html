@@ -3,24 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Ajouter un Point d'intérêt</ion-title>
+    <ion-title>Ajouter un Point</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p> Ajouter une photo de votre point d'interet</p>
+  <p style="font-size:1.5rem;" align="center"> Ajoutez une photo de votre point d'intérêt</p>
 
 
   <form>
     <ion-item>
       <img id="avatar" src="">
+      <br/>
       <p id="url" hidden></p>
-      <input type="file" id="img" (change)="getImage()">
+      <br/>
+      <input style="font-size:1.4rem;" type="file" id="img" (change)="getImage()">
     </ion-item>
-    <button id="bouton" ion-button round icon-only>
-      <ion-icon name="camera"></ion-icon>
-   </button>
-    <button  ion-button secondary (click)="sendData()" routerLink="/page-addPointInfos">
+
+    <button ion-button class="btn" secondary (click)="sendData()" routerLink="/page-addPointInfos">
       Valider
     </button>
 

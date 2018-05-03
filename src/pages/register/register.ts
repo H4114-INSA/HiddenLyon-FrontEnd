@@ -4,7 +4,11 @@ import {User} from "../../model/user.model";
 import { Globals} from "../../globalVariable/globals";
 import {UserExtended} from "../../model/userExtended.model";
 
+import{Router} from "@angular/router";
+
+
 import * as bcrypt from "bcryptjs";
+import {Validation} from "../../model/Validation.model";
 
 
 @Component({
@@ -22,16 +26,23 @@ export class RegisterPage {
   global:Globals;
   confPassword:string;
   userService:UserService;
+  router:Router;
 
 
-  constructor(serv:UserService,g:Globals) {
+  constructor(serv:UserService,g:Globals,r:Router) {
+    this.router=r;
     this.global=g;
     this.userService=serv;
-    this.exist=false;
   };
 
-
   register(){
+    this.userService.getUserExistence(this.mail)
+      .then(data => {
+        this.exist = data ;
+      }).catch(err => {
+      console.log("Probleme de getUserExistence");
+    });
+
     if(this.password!=this.confPassword){
       alert("your password doesn't match with your confirmation!");
     }
@@ -47,6 +58,7 @@ export class RegisterPage {
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);
+      this.router.navigateByUrl("/page-login");
     }
   }
 
@@ -60,8 +72,5 @@ export class RegisterPage {
     };
     reader.readAsDataURL((<HTMLInputElement>document.getElementById("img")).files[0]);
   }
-
-
-
 }
 
