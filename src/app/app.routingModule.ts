@@ -18,6 +18,7 @@ import {PagePOI} from "../pages/profil/PagePOI";
 
 import  {AddPointPage} from "../pages/addPoint/addPoint";
 import  {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
+import {InfosPointPage} from "../pages/infosPoint/infosPoint";
 
 
 const appRoutes: Routes = [

@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import {Geolocation } from '@ionic-native/geolocation';
+import { ModalController } from 'ionic-angular';
 import {POIService} from "../../service/POIService";
 import {PointOfInterest} from "../../model/PointOfInterest.model";
 import {Globals} from "../../globalVariable/globals";
@@ -20,7 +21,8 @@ export class MapPage {
   globals: Globals;
   categoriesC: Array<string>;
 
-  constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
+
+  constructor(public geolocation: Geolocation, serv: POIService, g: Globals,public modalCtrl: ModalController) {
     this.poiService=serv;
     this.globals=g;
     this.markers= new Array<google.maps.Marker>();
@@ -29,24 +31,36 @@ export class MapPage {
   public ngAfterViewInit()
   {
     this.loadMap();
+
   }
 
-  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
-        var i:number;
+  ajouterMarqueurs(): void {
+    var modalCtrl = this.modalCtrl;
+    var i:number;
 
-        for(i=0;i<coords.length;i++) {
-            var marker = new google.maps.Marker({
-            position: coords[i],
-            map: this.map,
-            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-            });
-            google.maps.event.addDomListener(marker, 'click', function() {
-                console.log("marqueur");
 
-            });
-            this.markers.push(marker);
-        }
-   }
+    for(i=0;i<this.points.length;i++) {
+        let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
+        var marker = new google.maps.Marker({
+          position:latLng,
+          map: this.map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          });
+        var title = this.points[i].title;
+        var description = this.points[i].description;
+        var picture = this.points[i].picture;
+        var categories = this.points[i].categories;
+
+        const myModal =  modalCtrl.create('InfosPointPage', { title: title,
+          description: description,
+          picture: picture,
+          categories: categories });
+        marker.addListener('click', function() {
+          myModal.present();
+        });
+        this.markers.push(marker);
+    }
+  }
 
   loadMap(){
 
@@ -58,6 +72,7 @@ export class MapPage {
       let mapOptions = {
         center: latLng,
         zoom: 15,
+        streetViewControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
@@ -65,35 +80,31 @@ export class MapPage {
 
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
         let coord: Array<google.maps.LatLng> =[];
         coord[0] = latLng1;
-        coord[1] = latLng2;
 
-        this.ajouterMarqueurs(coord);
+        this.marquerPositionGeo(coord);
 
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
-        this.points = data;
-        this.traitementPoints();
-
-        }).catch(err =>{
-        });
-    }, (err) => {
-      console.log(err);
+            this.points = data;
+            this.ajouterMarqueurs();
+            }).catch(err =>{
+            });
+        }, (err) => {
+          console.log(err);
     });
 
   }
-
-  traitementPoints() {
-    let coords: Array<google.maps.LatLng> =[];
-    for(var i=0;i<this.points.length;i++){
-
-            let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
-            coords[i] = latLng;
-        }
-        this.ajouterMarqueurs(coords);
+  marquerPositionGeo(coords: Array<google.maps.LatLng>) :void {
+    var i:number;
+    for(i=0;i<coords.length;i++) {
+      var marker = new google.maps.Marker({
+        position: coords[i],
+        map: this.map,
+        icon: 'http://maps.google.com/mapfiles/ms/micons/red.png'
+      });
     }
-
+  }
 
     clearMarkers() {
         for (var i = 0; i < this.markers.length; i++) {
@@ -113,7 +124,7 @@ export class MapPage {
         if(this.categoriesC.length==0) {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
@@ -142,22 +153,21 @@ export class MapPage {
         else {
             this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
+            this.ajouterMarqueurs();
 
             }).catch(err =>{
                 });
         }
     }
-    
+
     cancel() {
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
             this.points = data;
-            this.traitementPoints();
-        
+            this.ajouterMarqueurs();
+
             }).catch(err =>{
                 });
     }
-
 }
 
 
