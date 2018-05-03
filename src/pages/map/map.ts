@@ -38,22 +38,26 @@ export class MapPage {
   {
     this.loadMap();
   }
+
   
-  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
+  ajouterMarqueurs(): void {
         var i:number;
         var parcours = this.parcours;
         var direction = this.direction;
         var map = this.map;
+        var modalCtrl = this.modalCtrl;
 
-        for(i=0;i<coords.length;i++) {
+        for(i=0;i<this.points.length;i++) {
+            let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
             var marker = new google.maps.Marker({
-            position: coords[i],
+            position: latLng,
             map: this.map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
             
-            google.maps.event.addDomListener(marker, 'click', function(e) {
-
+            const myModal =  modalCtrl.create('InfosPointPage', {point: this.points[i] });
+            marker.addListener('click', function() {
+              myModal.present();
             });
             
             google.maps.event.addDomListener(marker, 'dblclick', function(e) {
