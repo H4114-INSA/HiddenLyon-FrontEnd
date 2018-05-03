@@ -96,8 +96,8 @@ distanceParcours:string;
         this.velo="Vélo";
         this.marcher="A pied";
         this.remplirAuMoins1Champs="Remplir au moins un champs pour valider";
-        this.distanceParcours="Distance de parcours(km)";
-        this.tempsParcours="Temps de parcours(minutes)";
+        this.distanceParcours="Distance de parcours (km)";
+        this.tempsParcours="Temps de parcours (minutes)";
         this.revenirPointDepart="Revenir au point de départ?";
         break;
       case ("en"):
