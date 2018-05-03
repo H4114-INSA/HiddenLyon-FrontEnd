@@ -85,6 +85,24 @@ export class POIService {
       });
   }
 
+  getPOICategorie(token : string, categories : Array<String>){
+    var query : string="nameCategories=";
+    for(let c of categories){
+      query+=c.valueOf()+",";
+    }
+    query=query.slice(0,-1);
+    console.log(query);
+    return this.http.get("http://localhost:8080/poi/getFilterPoints?"+query, {headers: new HttpHeaders({Authorization: 'Basic ' + token})})
+      .toPromise()
+      .then(data => {
+        return data as Array<PointOfInterest>;
+      });
+  }
+
+  getPOIRequete(token: string, q: string){
+
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred during the authentication, please check your email/password'); // for demo purposes only
     return Promise.reject(error.message || error);

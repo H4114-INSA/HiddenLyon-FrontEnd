@@ -60,8 +60,5 @@ export class RegisterPage {
     };
     reader.readAsDataURL((<HTMLInputElement>document.getElementById("img")).files[0]);
   }
-
-
-
 }
 
