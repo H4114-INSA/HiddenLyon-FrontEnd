@@ -1,7 +1,14 @@
 page-parametres{
 
   .bottom_button, input {
-    width: 100%;
-    margin-bottom: 4%
+    display: block;
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 60%;
+  }
+
+  .my-label {
+    font-size: 1.4rem;
   }
 }
