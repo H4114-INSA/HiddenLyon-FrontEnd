@@ -18,9 +18,11 @@ export class MapPage {
   map: any;
   points:Array<PointOfInterest>;
   markers:Array<google.maps.Marker>;
+  parcours:Array<google.maps.LatLng>;
   poiService:POIService;
   globals: Globals;
   categoriesC: Array<string>;
+  direction: google.maps.DirectionsRenderer;
   cat:Array<Category>;
 
 
@@ -28,6 +30,7 @@ export class MapPage {
     this.poiService=serv;
     this.globals=g;
     this.markers= new Array<google.maps.Marker>();
+    this.parcours= new Array<google.maps.LatLng>();
     this.getCategories();
   }
 
@@ -35,40 +38,67 @@ export class MapPage {
   {
     this.loadMap();
   }
+  
+  ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
+        var i:number;
+        var parcours = this.parcours;
+        var direction = this.direction;
+        var map = this.map;
 
+        for(i=0;i<coords.length;i++) {
+            var marker = new google.maps.Marker({
+            position: coords[i],
+            map: this.map,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            });
+            
+            google.maps.event.addDomListener(marker, 'click', function(e) {
+
+            });
+            
+            google.maps.event.addDomListener(marker, 'dblclick', function(e) {
+                marker.selected = !marker.selected;
+                
+                let latLng = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                parcours.push(latLng);
+                
+                if(parcours.length >= 2) {
+                    var origin = parcours[0];
+                    var destination = parcours[parcours.length-1];
+                    var waypoints = [];
+                    for(var i =1; i<parcours.length-1;i++) {
+                        waypoints.push({
+                            location: parcours[i],
+                        });
+                    }
+                     if(origin && destination){
+                        var request = {
+                            origin      : origin,
+                            destination : destination,
+                            waypoints : waypoints,
+                            travelMode  : google.maps.DirectionsTravelMode.WALKING // Type de transport
+                        }
+
+                        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+                        directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+                            if(status == google.maps.DirectionsStatus.OK){
+                                direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+                            }
+                        });
+                    }
+                    direction.setMap(map);
+                }
+                
+            });
+            this.markers.push(marker);
+        }
+   }
+   
   getCategories(){
     this.poiService.getAllCategory(this.globals.userExtended.token)
       .then(data=>{
         this.cat=data;
       });
-  }
-
-  ajouterMarqueurs(): void {
-    var modalCtrl = this.modalCtrl;
-    var i:number;
-
-
-    for(i=0;i<this.points.length;i++) {
-        let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
-        var marker = new google.maps.Marker({
-          position:latLng,
-          map: this.map,
-          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-          });
-        var title = this.points[i].title;
-        var description = this.points[i].description;
-        var picture = this.points[i].picture;
-        var categories = this.points[i].categories;
-
-        const myModal =  modalCtrl.create('InfosPointPage', { title: title,
-          description: description,
-          picture: picture,
-          categories: categories });
-        marker.addListener('click', function() {
-          myModal.present();
-        });
-        this.markers.push(marker);
-    }
   }
 
   loadMap(){
@@ -84,8 +114,13 @@ export class MapPage {
         streetViewControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+      
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      
+      this.direction = new google.maps.DirectionsRenderer({
+            map   : this.map,
+        });
 
        //Affichage des marqueurs
         let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -176,6 +211,11 @@ export class MapPage {
 
             }).catch(err =>{
                 });
+    }
+    
+    resetParcours() {
+        this.direction.setMap(null);
+        this.parcours.length = 0;
     }
 
 }
