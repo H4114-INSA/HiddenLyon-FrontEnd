@@ -22,6 +22,10 @@ export class UserService {
       .toPromise();
   }
 
+  getUserExistence(token:string, user: User) {
+
+  }
+
   loginService(params: string): Promise<UserExtended> {
     return this.http.get(params)
       .toPromise()

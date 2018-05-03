@@ -7,35 +7,34 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-    <div class="marge">
-        <p class="label"> Votez vert si vous jugez le point d'interêt original, et si les informations sont cohérentes entre elles. </p>
-    
-        <h3>{{poi?.title}}</h3>
-        
-        <div>
-            <img alt="images.jpg" width="50%" height="auto" margin-top="3%" class="photo" src={{poi?.picture}}>
-        
-            <p id="categories" height="100%"> <strong>Catégorie(s):</strong>
-                <li class="itemliste"> Catégorie 1</li>
-                <li class="itemliste"> Catégorie 2</li>
-                <li class="itemliste"> Catégorie 3</li>
-            </p>
-        </div>
-
-
-        <p id="descriptiont"> <strong>{{globals.langue.description}}:</strong></p>
-        <p id="description">
-            {{poi?.description}}
-        </p>
-
-        <button id="poucerouge" ion-button round icon-only color="danger" (click)="vote_Non()">
-              <ion-icon name="thumbs-down"></ion-icon>
-        </button>
-
-        <button id ="poucevert" ion-button round icon-only color ="secondary" (click)="vote_Oui()">
-              <ion-icon name="thumbs-up"></ion-icon>
-        </button>
-        
-    </div>
+<ion-content *ngIf="!pointAValider">
+  <p margin-left="5%" padding-top="50%" float="center"> Pas de point d'intérêt à valider. Repassez plus tard !</p>
 </ion-content>
+
+<ion-content *ngIf="pointAValider">
+  <div class="marge">
+    <h3>{{poi?.title}}</h3>
+
+    <div>
+        <img width="50%" height="auto" margin-top="3%" class="photo" src={{poi?.picture}}>
+
+        <p id="categories"> <strong>Catégorie(s):</strong>
+          <li margin-left="2px" *ngFor="let cat of poi?.categories">{{cat.categoryName}}</li>
+        </p>
+    </div>
+    <p id="descriptiont"> <strong>{{globals.langue.description}}:</strong></p>
+    <p id="description">{{poi?.description}}</p>
+
+    <button id="poucerouge" ion-button round icon-only color="danger" (click)="vote_Non()" >
+          <ion-icon name="thumbs-down"></ion-icon>
+          <p style="margin-right: 10px">Pas original</p>
+    </button>
+
+
+    <button id ="poucevert" ion-button round icon-only color ="secondary" (click)="vote_Oui()">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <p style="margin-right: 10px">Original</p>
+    </button>
+  </div>
+</ion-content>
+

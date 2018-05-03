@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   {path:'page-register',component:RegisterPage},
   {path:'page-addPoint',component:AddPointPage},
   {path:'page-addPointInfos',component:AddPointInfosPage},
-  {path:'page-validerPoint',component:ValiderPointPage},
+  {path:'page-validerPoint',component:ValiderPointPage, runGuardsAndResolvers : 'always'},
   {path:'page-report',component:ReportPage},
   {path:'page-parcours',component:ParcoursPage},
   {path:'page-parametres',component:ParametresPage},
@@ -41,6 +41,6 @@ const appRoutes: Routes = [
 
 @NgModule({
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(appRoutes) ],
+  imports: [ RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'})],
 })
 export class AppRoutingModule {}

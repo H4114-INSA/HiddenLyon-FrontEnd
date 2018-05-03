@@ -6,20 +6,19 @@
 
 <ion-content padding >
   <div>
-    <img id="imageAccueil" [src]="image" height="auto" width="40%" >
+    <img id="imageAccueil" [src]="image"  >
   </div>
+
   <form id="marg_bot" >
     <ion-item>
-      <ion-input type="text" [(ngModel)]="usermail" name="username" placeholder={{global.langue.email}}></ion-input>
+      <ion-input class="style" type="text" [(ngModel)]="usermail" name="username" placeholder={{global.langue.email}}></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="password" [(ngModel)]="password" name="password" placeholder="{{global.langue.password}}"></ion-input>
+      <ion-input class="style" type="password" [(ngModel)]="password" name="password" placeholder="{{global.langue.password}}"></ion-input>
     </ion-item>
   </form>
   <div>
-    <button ion-button class="bottom_button"  [disabled]="!usermail ||!password" method = "GET" (click)="login()">{{global.langue.login}}</button>
+    <button ion-button margin-top="30px" class="bottom_button"  [disabled]="!usermail ||!password" method = "GET" (click)="login()">{{global.langue.login}}</button>
     <button ion-button class="bottom_button" routerLink="/page-register" >{{global.langue.register}}</button>
-    //todo forgotten
-    <button ion-button class="bottom_button">{{global.langue.forgottenPassword}}</button>
   </div>
 </ion-content>

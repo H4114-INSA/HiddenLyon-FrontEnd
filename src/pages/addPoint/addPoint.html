@@ -10,26 +10,20 @@
 <ion-content padding>
   <p> Ajouter une photo de votre point d'interet</p>
 
-  <ion-content padding >
 
-    <form id="form" method="post" enctype="multipart/form-data">
+  <form>
+    <ion-item>
+      <img id="avatar" src="">
+      <p id="url" hidden></p>
+      <input type="file" id="img" (change)="getImage()">
+    </ion-item>
+    <button id="bouton" ion-button round icon-only>
+      <ion-icon name="camera"></ion-icon>
+   </button>
+    <button  ion-button secondary (click)="sendData()" routerLink="/page-addPointInfos">
+      Valider
+    </button>
 
-      <ion-item>
-        <img id="avatar" src="">
-        <p id="url" hidden></p>
-        <input type="file" id="img" (change)="getImagePOI()">
-      </ion-item>
-
-      <ion-item>
-        <ion-input placeholder={{global?.langue.titre}} [(ngModel)]="title" type="text" name="title"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input placeholder={{global?.langue.description}} [(ngModel)]="description" type="text" name="description"></ion-input>
-      </ion-item>
-
-    </form >
-    <button ion-button type="button" class="bottom_button"  method="GET" (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
-    <button ion-button class="bottom_button" routerLink="/page-login">{{global?.langue.cancel}}</button>
+  </form>
 
 </ion-content>

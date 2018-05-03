@@ -15,6 +15,7 @@ export class RegisterPage {
   fname:string;
   lname:string;
   mail:string;
+  exist:boolean;
   password:string;
   bio:string;
   img:string;
@@ -26,11 +27,18 @@ export class RegisterPage {
   constructor(serv:UserService,g:Globals) {
     this.global=g;
     this.userService=serv;
-  }
+    this.exist=false;
+  };
 
 
   register(){
-    if(this.password==this.confPassword){
+    if(this.password!=this.confPassword){
+      alert("your password doesn't match with your confirmation!");
+    }
+    else if(this.exist==true){
+      alert("this e-mail already exists!");
+    }
+    else{
       this.img = (<HTMLParagraphElement>document.getElementById("url")).innerHTML;
       console.log(this.img);
       var hash = bcrypt.hashSync(this.password, 10);
@@ -39,8 +47,6 @@ export class RegisterPage {
       var params:string;
       params="http://localhost:8080/user/add";
       this.userService.registerService(params,user);
-    } else{
-      alert("your password doesn't match with your confirmation!");
     }
   }
 
