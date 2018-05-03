@@ -40,8 +40,8 @@
     </ion-item>
   </form >
 
-  <p> todo : cas d'erreur si pb dans l'inscription (change the variable "exists" once the back method using the mail is done)</p>
-  <button ion-button type="button" float-right class="bottom_button"  method="GET" (click)="register()" routerLink="/page-login" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
+  <p> tester erreur si deux users au meme mail veulent se register)</p>
+  <button ion-button type="button" float-right class="bottom_button"  method="GET" (click)="register()" [disabled]="!password || !mail || !fname || !lname || !confPassword ">{{global?.langue.register}}</button>
   <button ion-button type="button" float-left  class="bottom_button"  color="light" id="cancelbtn"  routerLink="/page-login" >{{global?.langue.cancel}}</button>
 
 </ion-content>
