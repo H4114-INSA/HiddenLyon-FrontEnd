@@ -19,6 +19,20 @@ export class InfosPointPage {
     this.categories=params.get('categories');
   }
 
+  rate(rate:number){
+    console.log(rate);
+    var stars = document.getElementsByClassName('rate');
+    var i;
+    for(i =0; i < stars.length; i++){
+      if (i < rate){
+        stars[stars.length - i -1].className = 'rate checked '+(i+1);
+      }else{
+        stars[stars.length - i -1].className = 'rate '+(i+1);
+      }
+
+    }
+  }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }

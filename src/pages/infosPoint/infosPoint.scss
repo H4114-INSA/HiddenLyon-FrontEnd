@@ -38,7 +38,8 @@ page-infospoint {
   .rating a:hover,
   .rating a:focus,
   .rating a:hover ~ a,
-  .rating a:focus ~ a {
+  .rating a:focus ~ a,
+  .rating a.checked {
     color: orange;
     cursor: pointer;
   }
