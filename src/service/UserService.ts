@@ -22,8 +22,13 @@ export class UserService {
       .toPromise();
   }
 
-  getUserExistence(token:string, user: User) {
-
+  getUserExistence(mail: string) {
+    return this.http.get('http://localhost:8080/user/check?email='+mail)
+      .toPromise()
+    .then(data => {
+      return data as boolean;
+    })
+      .catch(this.handleError);
   }
 
   loginService(params: string): Promise<UserExtended> {
