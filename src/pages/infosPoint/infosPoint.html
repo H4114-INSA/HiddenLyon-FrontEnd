@@ -2,7 +2,7 @@
 
     <ion-icon class="close-modal" (click)="dismiss()" ios="ios-close-circle" md="md-close-circle"></ion-icon>
   <div class="left-content">
-    <img class="photo" src="../../assets/imgs/bb.jpg">
+    <img class="photo" src={{picture}}>
 
     <div class="rating"><!--
    --><a href="#5" title="Donner 5 étoiles">★</a><!--
@@ -18,22 +18,17 @@
       {{title}}
     </p>
 
+
     <ion-grid>
-      <ion-row>
+      <ion-row *ngFor="let category of categories">
         <ion-col>
-          Categorie 1 of 3
-        </ion-col>
-        <ion-col>
-          Categorie 2 of 3
-        </ion-col>
-        <ion-col>
-          Categorie 3 of 3
+          {{category.categoryName}}
         </ion-col>
       </ion-row>
     </ion-grid>
 
     <p class="description">
-      Description
+      {{description}}
     </p>
 
     <button ion-button class="report" color="danger">

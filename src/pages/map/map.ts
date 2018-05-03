@@ -40,21 +40,22 @@ export class MapPage {
     for(i=0;i<this.points.length;i++) {
         let latLng = new google.maps.LatLng(this.points[i].latitude, this.points[i].longitude);
         var marker = new google.maps.Marker({
-        position:latLng,
-        map: this.map,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-        });
+          position:latLng,
+          map: this.map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          });
         var title = this.points[i].title;
-     //   var description = this.points[i].description;
-     //   var description = this.points[i].description;
-      //  var picture = this.points[i].picture;
-      //  var categories = this.points[i].categories;
+        var description = this.points[i].description;
+        var picture = this.points[i].picture;
+        var categories = this.points[i].categories;
 
-
+        const myModal =  modalCtrl.create('InfosPointPage', { title: title,
+          description: description,
+          picture: picture,
+          categories: categories });
         marker.addListener('click', function() {
-        const myModal =  modalCtrl.create('InfosPointPage', { title: title });
-        myModal.present();
-      });
+          myModal.present();
+        });
 
     }
    }
