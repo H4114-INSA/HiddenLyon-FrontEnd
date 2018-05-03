@@ -14,8 +14,10 @@
   <form>
     <ion-item>
       <img id="avatar" src="">
+      <br/>
       <p id="url" hidden></p>
-      <input type="file" id="img" (change)="getImage()">
+      <br/>
+      <input style="font-size:1.4rem;" type="file" id="img" (change)="getImage()">
     </ion-item>
 
     <button ion-button class="btn" secondary (click)="sendData()" routerLink="/page-addPointInfos">
