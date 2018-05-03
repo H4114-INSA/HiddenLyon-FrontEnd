@@ -13,9 +13,7 @@
   <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
     <ion-icon name="add"></ion-icon>
   </button>
-  <button id="boutonSuppr" ion-button round icon-only color="danger" (click)="resetParcours()">
-    <ion-icon name="close"></ion-icon>
-  </button>
+
   <div id="layout">
     <ion-searchbar id="searchbar" [(ngModel)]="myInput" (keyup.enter)="filtrerRequete()" (ionClear)="cancel()"></ion-searchbar>
 
