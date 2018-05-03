@@ -100,7 +100,11 @@ export class POIService {
   }
 
   getPOIRequete(token: string, q: string){
-
+    return this.http.get("http://localhost:8080/poi/getSearchedPoints?name="+q, {headers: new HttpHeaders({Authorization: 'Basic ' + token})})
+      .toPromise()
+      .then(data => {
+        return data as Array<PointOfInterest>;
+      });
   }
 
   private handleError(error: any): Promise<any> {

@@ -17,7 +17,7 @@
 
 
   <div id="layout">
-    <ion-searchbar #q id="searchbar" (keyup.enter)="filtrerRequete(q.value)" (ionClear)="cancel()"></ion-searchbar>
+    <ion-searchbar id="searchbar" [(ngModel)]="myInput" (keyup.enter)="filtrerRequete()" (ionClear)="cancel()"></ion-searchbar>
 
   <ion-list id="list">
     <ion-item>
