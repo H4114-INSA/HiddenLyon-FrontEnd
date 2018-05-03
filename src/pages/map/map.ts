@@ -16,14 +16,17 @@ export class MapPage {
   map: any;
   points:Array<PointOfInterest>;
   markers:Array<google.maps.Marker>;
+  parcours:Array<google.maps.LatLng>;
   poiService:POIService;
   globals: Globals;
   categoriesC: Array<string>;
+  direction: google.maps.DirectionsRenderer;
 
   constructor(public geolocation: Geolocation, serv: POIService, g: Globals) {
     this.poiService=serv;
     this.globals=g;
     this.markers= new Array<google.maps.Marker>();
+    this.parcours= new Array<google.maps.LatLng>();
   }
 
   public ngAfterViewInit()
@@ -33,6 +36,9 @@ export class MapPage {
 
   ajouterMarqueurs(coords: Array<google.maps.LatLng>): void {
         var i:number;
+        var parcours = this.parcours;
+        var direction = this.direction;
+        var map = this.map;
 
         for(i=0;i<coords.length;i++) {
             var marker = new google.maps.Marker({
@@ -40,9 +46,44 @@ export class MapPage {
             map: this.map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
             });
-            google.maps.event.addDomListener(marker, 'click', function() {
-                console.log("marqueur");
+            
+            google.maps.event.addDomListener(marker, 'click', function(e) {
 
+            });
+            
+            google.maps.event.addDomListener(marker, 'dblclick', function(e) {
+                marker.selected = !marker.selected;
+                
+                let latLng = new google.maps.LatLng(e.latLng.lat(), e.latLng.lng());
+                parcours.push(latLng);
+                
+                if(parcours.length >= 2) {
+                    var origin = parcours[0];
+                    var destination = parcours[parcours.length-1];
+                    var waypoints = [];
+                    for(var i =1; i<parcours.length-1;i++) {
+                        waypoints.push({
+                            location: parcours[i],
+                        });
+                    }
+                     if(origin && destination){
+                        var request = {
+                            origin      : origin,
+                            destination : destination,
+                            waypoints : waypoints,
+                            travelMode  : google.maps.DirectionsTravelMode.WALKING // Type de transport
+                        }
+
+                        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+                        directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+                            if(status == google.maps.DirectionsStatus.OK){
+                                direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+                            }
+                        });
+                    }
+                    direction.setMap(map);
+                }
+                
             });
             this.markers.push(marker);
         }
@@ -60,21 +101,19 @@ export class MapPage {
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
+      
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-       //Affichage des marqueurs
-        let latLng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        let latLng2 = new google.maps.LatLng(position.coords.latitude+0.01, position.coords.longitude+0.01);
-        let coord: Array<google.maps.LatLng> =[];
-        coord[0] = latLng1;
-        coord[1] = latLng2;
-
-        this.ajouterMarqueurs(coord);
+      
+      this.direction = new google.maps.DirectionsRenderer({
+            map   : this.map,
+        });
 
         this.poiService.getPOI(this.globals.userExtended.token).then(data => {
         this.points = data;
         this.traitementPoints();
+        
+        
 
         }).catch(err =>{
         });
@@ -156,6 +195,11 @@ export class MapPage {
         
             }).catch(err =>{
                 });
+    }
+    
+    resetParcours() {
+        this.direction.setMap(null);
+        this.parcours.length = 0;
     }
 
 }
