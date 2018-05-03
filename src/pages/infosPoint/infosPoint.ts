@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ViewController, IonicPage} from 'ionic-angular';
+import {ViewController, IonicPage, NavParams} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,9 +8,11 @@ import {ViewController, IonicPage} from 'ionic-angular';
 })
 export class InfosPointPage {
 
-  constructor(public viewCtrl: ViewController) {
-
+  constructor(public viewCtrl: ViewController, params: NavParams) {
+    console.log('title', params.get('title'));
+    //document.getElementById("titlePOI").innerText=params.get('title');
   }
+
   dismiss() {
     this.viewCtrl.dismiss();
   }

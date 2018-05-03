@@ -44,7 +44,8 @@ export class MapPage {
         map: this.map,
         icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
         });
-        var title = 'GROS PD';
+        var title = this.points[i].title;
+     //   var description = this.points[i].description;
      //   var description = this.points[i].description;
       //  var picture = this.points[i].picture;
       //  var categories = this.points[i].categories;
