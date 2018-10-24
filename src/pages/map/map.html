@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+<<<<<<< HEAD
   <ion-item>
     <button>
       <ion-icon name="menu"></ion-icon>
@@ -16,4 +17,24 @@
 <agm-map [latitude]="lat" [longitude]="lng">
  <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="details()"></agm-marker>
 </agm-map>
+=======
+  <div #map id="map"></div>
+  <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+  <div id="layout">
+    <ion-searchbar id="searchbar" [(ngModel)]="myInput" (keyup.enter)="filtrerRequete()" (ionClear)="cancel()"></ion-searchbar>
+
+  <ion-list id="list">
+    <ion-item>
+      <ion-label> <ion-icon name="pricetag"></ion-icon></ion-label>
+      <ion-select id="select" multiple="true" cancelText="Annuler" okText="Valider" (ionChange)="filtrerCategorie()" [(ngModel)]="categoriesC">
+          <ion-option *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  </div>
+
+>>>>>>> 1f4711547b154b922431c03a90f6ce668f8db9c7
 </ion-content>

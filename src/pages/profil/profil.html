@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-tabs tabsPlacement="top">
+  <ion-tab [root]="MonProfil" tabTitle="Mon profil" ></ion-tab>
+  <ion-tab [root]="MesStatistiques" tabTitle="Mes stats"></ion-tab>
+  <ion-tab [root]="MesPOI" tabTitle="Mes points"></ion-tab>
+</ion-tabs>
+

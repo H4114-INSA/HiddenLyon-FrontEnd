@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{globals.langue.parcours}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding >
+  <form id="form">
+
+    <ion-item>
+      <ion-label class="my-label" >{{globals.langue.categorie}}</ion-label>
+      <ion-select class="my-label" [(ngModel)]="cat" name="categorie" multiple="true">
+        <ion-option class="my-label" value="1">catégorie 1</ion-option>
+        <ion-option class="my-label" value="2">catégorie 2</ion-option>
+        <ion-option class="my-label" value="3">catégorie 3</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item  >
+      <ion-label class="my-label" >{{globals.langue.transport}}</ion-label>
+      <ion-select class="my-label" [(ngModel)]="trans" name="trans" multiple="true">
+        <ion-option class="my-label" value="1">{{globals.langue.TCL}}</ion-option>
+        <ion-option class="my-label" value="2">{{globals.langue.voiture}}</ion-option>
+        <ion-option class="my-label" value="3">{{globals.langue.velo}}</ion-option>
+        <ion-option class="my-label" value="4">{{globals.langue.marcher}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <br/>
+    <br/>
+      <p style="font-size:1.6rem;">{{globals.langue.remplirAuMoins1Champs}}</p>
+    <ion-item class="my-label">
+      <ion-label class="my-class"> {{globals.langue.tempsParcours}}</ion-label>
+      <br/>
+        <ion-input class="my-label" placeholder="Min" [(ngModel)]="tempsMin" name="tempsmin" type="number"></ion-input>
+        <ion-input class="my-label" placeholder="Max" [(ngModel)]="tempsMax" name="tempsmax" type="number"></ion-input>
+    </ion-item>
+    <ion-item class="my-label">
+    <ion-label class="my-class" >{{globals.langue.distanceParcours}}</ion-label>
+    <br/>
+      <ion-input class="my-label" placeholder="Min" [(ngModel)]="distMin" name="distMin" type="number"></ion-input>
+      <ion-input class="my-label" placeholder="Max" [(ngModel)]="distMax" name="distMax" type="number"></ion-input>
+    </ion-item>
+      <ion-item class="my-label">
+        <ion-label class="my-label">{{globals.langue.revenirPointDepart}}</ion-label>
+        <ion-checkbox class="my-label"[(ngModel)]="backPoint" name="back"></ion-checkbox>
+      </ion-item>
+  </form >
+  <button ion-button type="button" class="bottom_button"  method="GET" (click)="report()" [disabled]="!tempsMin && !tempsMax&& !distMin && !distMax">{{globals.langue.valider}}</button>
+</ion-content>
+
+

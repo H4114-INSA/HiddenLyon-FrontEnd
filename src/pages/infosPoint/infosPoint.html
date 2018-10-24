@@ -1,0 +1,39 @@
+<ion-content>
+
+    <ion-icon class="close-modal" (click)="dismiss()" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+  <div class="left-content">
+    <img class="photo" src={{picture}}>
+
+    <div class="rating">
+      <a (click)="rate(5)" class="rate 5" title="Donner 5 étoiles">★</a>
+      <a (click)="rate(4)" class="rate 4" title="Donner 4 étoiles">★</a>
+      <a (click)="rate(3)" class="rate 3" title="Donner 3 étoiles">★</a>
+      <a (click)="rate(2)" class="rate 2" title="Donner 2 étoiles">★</a>
+      <a (click)="rate(1)" class="rate 1" title="Donner 1 étoile">★</a>
+    </div>
+  </div>
+
+  <div class="right-content">
+    <p class="title">
+      {{title}}
+    </p>
+
+
+    <ion-grid>
+      <ion-row *ngFor="let category of categories">
+        <ion-col>
+          {{category.categoryName}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <p class="description">
+      {{description}}
+    </p>
+
+    <button ion-button class="report" color="danger">
+        Signaler
+      </button>
+  </div>
+
+</ion-content>
