@@ -3,56 +3,25 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { MapPage } from '../pages/map/map';
-import {LoginPage} from "../pages/login/login";
-import {ProfilPage} from "../pages/profil/profil";
-import { RegisterPage} from "../pages/register/register";
-import  { ValiderPointPage} from "../pages/validerPoint/validerPoint";
-import { ReportPage} from "../pages/report/report";
-import { ParcoursPage} from "../pages/parcours/parcours";
-import {AddPointPage} from "../pages/addPoint/addPoint";
-import {AddPointInfosPage} from "../pages/addPointInfos/addPointInfos";
-import {InfosPointPage} from "../pages/infosPoint/infosPoint";
 
+import { DetailPage} from "../pages/details/details";
 import { ParametresPage} from "../pages/parametres/parametres";
-import {ConditionsPage} from "../pages/conditions/conditions";
-import {PageStat} from "../pages/profil/PageStat";
-import {PageProf} from "../pages/profil/PageProf";
-import {PagePOI} from "../pages/profil/PagePOI";
+import {MapPage } from "../pages/map/map";
 
-import { Geolocation } from '@ionic-native/geolocation';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import  {AppRoutingModule} from "./app.routingModule";
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-
-import {UserService} from "../service/UserService";
-import{POIService} from "../service/POIService";
-import {Globals} from "../globalVariable/globals";
-import {AuthGuardService} from "../service/AuthGardService";
-
-
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
 
   declarations: [
     MyApp,
-    LoginPage,
-    ProfilPage,
-    AddPointPage,
-    AddPointInfosPage,
-    MapPage,
-    AddPointInfosPage,
-    RegisterPage,
-    ValiderPointPage,
-    ReportPage,
-    ParcoursPage,
+    DetailPage,
     ParametresPage,
-    ConditionsPage,
-    PageProf,
-    PagePOI,
-    PageStat
+    MapPage
   ],
   imports: [
    AppRoutingModule,
@@ -60,19 +29,17 @@ import {AuthGuardService} from "../service/AuthGardService";
    HttpModule ,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDTLkCuDTOPlSK32-u3Xo0RpuKMjKZiet0'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    LoginPage,
+    MapPage,
   ],
   providers: [
-    UserService,
-    POIService,
-    AuthGuardService,
-    Globals,
     StatusBar,
     SplashScreen,
-    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

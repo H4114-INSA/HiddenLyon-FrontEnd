@@ -3,38 +3,28 @@ import {  Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MapPage } from '../pages/map/map';
-import { LoginPage } from '../pages/login/login';
-import {ProfilPage} from "../pages/profil/profil";
-import {ValiderPointPage} from "../pages/validerPoint/validerPoint";
-import {ReportPage} from "../pages/report/report";
-import {ParcoursPage} from "../pages/parcours/parcours";
+
+import {DetailPage} from "../pages/details/details";
 import {ParametresPage} from "../pages/parametres/parametres";
-
-
-import {Globals} from "../globalVariable/globals";
+import {MapPage} from "../pages/map/map";
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  global:Globals;
-  rootPage: any = LoginPage;
+  rootPage: any = MapPage;
   pages: Array<{title: string,route:string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,g:Globals) {
-    this.global=g;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: this.global.langue.map,route:'/page-map', component: MapPage },
-      { title: this.global.langue.profil,route:'/page-profil', component: ProfilPage },
-      { title: this.global.langue.validerPoint,route:'/page-validerPoint', component: ValiderPointPage },
-      { title: this.global.langue.report,route:'/page-report', component: ReportPage },
-      { title: this.global.langue.parcours,route:'/page-parcours', component: ParcoursPage },
-      { title: this.global.langue.parametres,route:'/page-parametres', component: ParametresPage },
+
+      { title: "details",route:'/page-details', component: DetailPage },
+      { title: "parametres",route:'/page-parametres', component: ParametresPage },
+      { title: "map",route:'/page-map', component: MapPage }
 
     ];
 

@@ -1,32 +1,12 @@
 <ion-header>
-  <ion-navbar color = "primary">
-    <button ion-button menuToggle>
+  <ion-navbar color = "primary"><button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Map</ion-title>
   </ion-navbar>
 </ion-header>
 
+<agm-map [latitude]="lat" [longitude]="lng">
+ <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="details()"></agm-marker>
+</agm-map>
 
-<ion-content>
-  <div #map id="map"></div>
-  <button id="bouton" ion-button round icon-only routerLink="/page-addPoint">
-    <ion-icon name="add"></ion-icon>
-  </button>
-  <button id="boutonSuppr" ion-button round icon-only color="danger" (click)="resetParcours()">
-    <ion-icon name="close"></ion-icon>
-  </button>
-  <div id="layout">
-    <ion-searchbar #q id="searchbar" (keyup.enter)="filtrerRequete(q.value)" (ionClear)="cancel()"></ion-searchbar>
-
-  <ion-list id="list">
-    <ion-item>
-      <ion-label> <ion-icon name="pricetag"></ion-icon></ion-label>
-      <ion-select id="select" multiple="true" cancelText="Annuler" okText="Valider" (ionChange)="filtrerCategorie()" [(ngModel)]="categoriesC">
-          <ion-option *ngFor="let item of cat" value={{item.constructor(item.categoryName)}}>{{item.categoryName}}</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  </div>
-
-</ion-content>
