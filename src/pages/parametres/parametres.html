@@ -26,12 +26,12 @@
 
       <ion-item>
         <ion-label class="my-label">Bande passante mini(Mb/s)</ion-label>
-        <ion-input [(ngModel)]="bandePassante" name="bandePassante" type="number"></ion-input>
+        <ion-input [(ngModel)]="bandePassante" name="bandePassante" type="number" min="0"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label class="my-label">distance de recherche(km)</ion-label>
-        <ion-input [(ngModel)]="distanceRecherche" name="distanceRecherche" type="number"></ion-input>
+        <ion-input [(ngModel)]="distanceRecherche" name="distanceRecherche" type="number" min="0"></ion-input>
       </ion-item>
 
       <ion-item>

@@ -11,13 +11,12 @@ export class MapPage {
 
   lat: number = 51.678418;
   lng: number = 7.809007;
-  constructor(public nav: NavController) {
+  constructor(  public navCtrl: NavController) {
 
   }
 
   details(){
-    this.nav.push(DetailPage);
-
+    this.navCtrl.push(DetailPage);
   }
 
 }
